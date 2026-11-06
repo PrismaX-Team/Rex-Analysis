@@ -370,8 +370,43 @@ function restart() {
   timer = setInterval(() => { if (!paused.value) index.value = (index.value + 1) % slides.value.length; }, INTERVAL);
 }
 
-onMounted(restart);
-onBeforeUnmount(() => clearInterval(timer));
+// Hero snap: one wheel notch moves between the hero and the first section, no need to keep scrolling.
+// Only acts near the top of the page; further down, scrolling is untouched.
+let snapLock = false;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function firstSectionTop() {
+  const el = document.getElementById("boards");
+  return el ? el.getBoundingClientRect().top + window.scrollY - 92 : 0;
+}
+function snapTo(top) {
+  snapLock = true;
+  window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+  setTimeout(() => { snapLock = false; }, 900);
+}
+function snapDir(dir) {
+  const y = window.scrollY;
+  const next = firstSectionTop();
+  if (dir > 0 && y < next - 4) { snapTo(next); return true; }
+  if (dir < 0 && y > 4 && y <= next + 40) { snapTo(0); return true; }
+  return false;
+}
+function onWheel(e) {
+  if (e.ctrlKey || Math.abs(e.deltaY) < 8 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+  if (snapLock) {
+    if (window.scrollY < firstSectionTop() + 40) e.preventDefault();
+    return;
+  }
+  if (snapDir(e.deltaY > 0 ? 1 : -1)) e.preventDefault();
+}
+
+onMounted(() => {
+  restart();
+  window.addEventListener("wheel", onWheel, { passive: false });
+});
+onBeforeUnmount(() => {
+  clearInterval(timer);
+  window.removeEventListener("wheel", onWheel);
+});
 
 function accentOf(bench) {
   return theme.value === "dark" ? bench.accent_dark || bench.accent : bench.accent;
