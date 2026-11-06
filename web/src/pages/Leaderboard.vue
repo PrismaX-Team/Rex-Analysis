@@ -45,6 +45,7 @@
         </button>
       </div>
       <p v-if="groupNote" class="lb-group-note">{{ groupNote }}</p>
+      <p class="lb-meta">{{ rows.length }} 个{{ groupNoun }} · 数据更新于 {{ updatedText }}</p>
 
       <div class="podium">
         <router-link
@@ -70,8 +71,10 @@
         :frontier="board.frontier || {}"
         :bench="benchId"
         :version="version"
+        :shared-harness="sharedHarness"
         @open="openRun"
       />
+      <CostChart :rows="rows" :label-of="labelOf" />
       <p v-if="board.note" class="lb-foot">{{ board.note }} 数据来源：{{ board.source }}</p>
     </template>
     <div v-else class="empty board-empty">
@@ -87,6 +90,7 @@ import { useRouter } from "vue-router";
 import TopBar from "../components/TopBar.vue";
 import ScoreNote from "../components/ScoreNote.vue";
 import LeaderboardTable from "../components/LeaderboardTable.vue";
+import CostChart from "../components/CostChart.vue";
 import { getLeaderboard, getPass5, getTasks } from "../data/client";
 import { useBench } from "../data/useBench";
 
@@ -106,6 +110,17 @@ watch(() => route.query.group, () => { group.value = pickGroup(); });
 
 const countOf = (id) => board.value.rows.filter((r) => (r.group || "all") === id).length;
 const rows = computed(() => board.value.rows.filter((r) => (r.group || "all") === group.value));
+const currentGroup = computed(() => groups.value.find((g) => g.id === group.value));
+const groupNoun = computed(() => (group.value === "agent" ? "智能体" : group.value === "llm" ? "模型" : "提交"));
+// Rows that are bare models all ran in the group's shared harness; the group note names it.
+const sharedHarness = computed(() => currentGroup.value?.harness || "");
+const labelOf = (row) => (row.model ? `${row.model} · ${row.system}` : row.system);
+const updatedText = computed(() => {
+  const d = board.value.updated;
+  if (!d) return "–";
+  const [y, m, day] = d.split("-").map(Number);
+  return `${y} 年 ${m} 月 ${day} 日`;
+});
 const fullCount = computed(() => getTasks(benchId.value, version.value).tasks.length);
 const maxScore = computed(() => Math.max(...rows.value.map((r) => r.score), 1));
 const groupNote = computed(() => groups.value.find((g) => g.id === group.value)?.note || "");
