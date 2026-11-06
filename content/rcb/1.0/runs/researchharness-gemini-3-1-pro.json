@@ -1,0 +1,258 @@
+{
+  "run_id": "researchharness-gemini-3-1-pro",
+  "version": "1.0",
+  "system": "Gemini-3.1-Pro",
+  "model": "",
+  "group": "llm",
+  "source": "internal",
+  "source_url": "",
+  "date": "2026-04-16",
+  "score": 13.28,
+  "task_count": 35,
+  "cost_usd": 1.6,
+  "duration_seconds": 1067,
+  "report_note": "分题报告、代码和评分理由仍在原项目站。",
+  "report_url": "https://internscience.github.io/ResearchClawBench-Home/",
+  "tasks": [
+    {
+      "task_id": "Astronomy_000",
+      "score": 7.5,
+      "cost_usd": 3.102,
+      "duration_seconds": 2068
+    },
+    {
+      "task_id": "Astronomy_001",
+      "score": 4.0,
+      "cost_usd": 0.213,
+      "duration_seconds": 142
+    },
+    {
+      "task_id": "Astronomy_002",
+      "score": 20.0,
+      "cost_usd": 1.371,
+      "duration_seconds": 914
+    },
+    {
+      "task_id": "Astronomy_003",
+      "score": 45.8,
+      "cost_usd": 0.2445,
+      "duration_seconds": 163
+    },
+    {
+      "task_id": "Chemistry_000",
+      "score": 19.6,
+      "cost_usd": 4.3785,
+      "duration_seconds": 2919
+    },
+    {
+      "task_id": "Chemistry_001",
+      "score": 4.25,
+      "cost_usd": 0.8025,
+      "duration_seconds": 535
+    },
+    {
+      "task_id": "Chemistry_002",
+      "score": 0.0,
+      "cost_usd": 0.264,
+      "duration_seconds": 176
+    },
+    {
+      "task_id": "Chemistry_003",
+      "score": null,
+      "cost_usd": null,
+      "duration_seconds": null
+    },
+    {
+      "task_id": "Earth_000",
+      "score": 14.8,
+      "cost_usd": 0.294,
+      "duration_seconds": 196
+    },
+    {
+      "task_id": "Earth_001",
+      "score": 28.05,
+      "cost_usd": 0.366,
+      "duration_seconds": 244
+    },
+    {
+      "task_id": "Earth_002",
+      "score": 11.0,
+      "cost_usd": 0.45,
+      "duration_seconds": 300
+    },
+    {
+      "task_id": "Earth_003",
+      "score": 1.5,
+      "cost_usd": 0.8625,
+      "duration_seconds": 575
+    },
+    {
+      "task_id": "Energy_000",
+      "score": 3.5,
+      "cost_usd": 0.7935,
+      "duration_seconds": 529
+    },
+    {
+      "task_id": "Energy_001",
+      "score": 3.0,
+      "cost_usd": 1.4055,
+      "duration_seconds": 937
+    },
+    {
+      "task_id": "Energy_002",
+      "score": 21.25,
+      "cost_usd": 0.624,
+      "duration_seconds": 416
+    },
+    {
+      "task_id": "Energy_003",
+      "score": 20.3,
+      "cost_usd": 0.216,
+      "duration_seconds": 144
+    },
+    {
+      "task_id": "Information_000",
+      "score": 10.5,
+      "cost_usd": 0.909,
+      "duration_seconds": 606
+    },
+    {
+      "task_id": "Information_001",
+      "score": 1.0,
+      "cost_usd": 1.5345,
+      "duration_seconds": 1023
+    },
+    {
+      "task_id": "Information_002",
+      "score": 8.8,
+      "cost_usd": 0.642,
+      "duration_seconds": 428
+    },
+    {
+      "task_id": "Information_003",
+      "score": null,
+      "cost_usd": null,
+      "duration_seconds": null
+    },
+    {
+      "task_id": "Life_000",
+      "score": 3.55,
+      "cost_usd": 0.4155,
+      "duration_seconds": 277
+    },
+    {
+      "task_id": "Life_001",
+      "score": 8.5,
+      "cost_usd": 0.2805,
+      "duration_seconds": 187
+    },
+    {
+      "task_id": "Life_002",
+      "score": 7.5,
+      "cost_usd": 6.2025,
+      "duration_seconds": 4135
+    },
+    {
+      "task_id": "Life_003",
+      "score": 18.0,
+      "cost_usd": 0.159,
+      "duration_seconds": 106
+    },
+    {
+      "task_id": "Material_000",
+      "score": 20.0,
+      "cost_usd": 11.1495,
+      "duration_seconds": 7433
+    },
+    {
+      "task_id": "Material_001",
+      "score": 5.25,
+      "cost_usd": 0.408,
+      "duration_seconds": 272
+    },
+    {
+      "task_id": "Material_002",
+      "score": null,
+      "cost_usd": null,
+      "duration_seconds": null
+    },
+    {
+      "task_id": "Material_003",
+      "score": 8.7,
+      "cost_usd": 4.4415,
+      "duration_seconds": 2961
+    },
+    {
+      "task_id": "Math_000",
+      "score": 21.1,
+      "cost_usd": 2.691,
+      "duration_seconds": 1794
+    },
+    {
+      "task_id": "Math_001",
+      "score": 13.5,
+      "cost_usd": 1.443,
+      "duration_seconds": 962
+    },
+    {
+      "task_id": "Math_002",
+      "score": null,
+      "cost_usd": null,
+      "duration_seconds": null
+    },
+    {
+      "task_id": "Math_003",
+      "score": 10.35,
+      "cost_usd": 0.297,
+      "duration_seconds": 198
+    },
+    {
+      "task_id": "Neuroscience_000",
+      "score": 2.0,
+      "cost_usd": 0.1455,
+      "duration_seconds": 97
+    },
+    {
+      "task_id": "Neuroscience_001",
+      "score": null,
+      "cost_usd": null,
+      "duration_seconds": null
+    },
+    {
+      "task_id": "Neuroscience_002",
+      "score": 0.0,
+      "cost_usd": 0.294,
+      "duration_seconds": 196
+    },
+    {
+      "task_id": "Neuroscience_003",
+      "score": 2.7,
+      "cost_usd": 0.5145,
+      "duration_seconds": 343
+    },
+    {
+      "task_id": "Physics_000",
+      "score": 22.0,
+      "cost_usd": 2.9655,
+      "duration_seconds": 1977
+    },
+    {
+      "task_id": "Physics_001",
+      "score": 22.55,
+      "cost_usd": 0.144,
+      "duration_seconds": 96
+    },
+    {
+      "task_id": "Physics_002",
+      "score": 27.55,
+      "cost_usd": 5.475,
+      "duration_seconds": 3650
+    },
+    {
+      "task_id": "Physics_003",
+      "score": 46.8,
+      "cost_usd": 0.4995,
+      "duration_seconds": 333
+    }
+  ]
+}

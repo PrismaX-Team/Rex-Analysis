@@ -1,0 +1,11 @@
+{
+  "versions": [
+    {
+      "id": "1.0",
+      "label": "1.0",
+      "status": "current",
+      "score_name": "Live Metric",
+      "score_note": "评分规则固定，但比较坐标持续更新。"
+    }
+  ]
+}

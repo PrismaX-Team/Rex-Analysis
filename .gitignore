@@ -1,0 +1,8 @@
+web/node_modules/
+web/dist/
+web/.ssrcheck/
+__pycache__/
+*.pyc
+*.xlsx
+.env
+.env.*
