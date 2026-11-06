@@ -4,12 +4,12 @@
       <div class="fc-lead">
         <dl class="fc-nums">
           <div><dd>{{ domains.length }}</dd><dt>科学领域</dt></div>
-          <div><dd>{{ subfieldCount }}</dd><dt>二级方向</dt></div>
+          <div><dd>{{ subfieldCount }}</dd><dt>二级领域</dt></div>
         </dl>
         <p>覆盖从基础科学到医学与工程的主要学科。</p>
       </div>
       <div class="fc-chart">
-        <ul class="fc-bars" aria-label="各领域在每个数据集中的方向数">
+        <ul class="fc-bars" aria-label="各领域在每个数据集中的任务数">
           <li v-for="d in domains" :key="d.name" :title="breakdown(d)">
             <span class="fc-name">{{ d.name }}</span>
             <span class="fc-bar">
@@ -37,8 +37,8 @@
         </Marquee>
       </div>
       <div class="fc-side">
-        <strong>{{ total }}</strong>
-        <b>方向</b>
+        <strong>{{ covered }}</strong>
+        <b>已有任务的领域</b>
         <p>{{ summary }}</p>
       </div>
     </div>
@@ -53,12 +53,15 @@ import { getFields } from "../data/client";
 
 const { domains, datasets, updated } = getFields();
 const subfieldCount = domains.reduce((n, d) => n + d.subfields.length, 0);
-const total = domains.reduce((n, d) => n + d.total, 0);
 const maxTotal = Math.max(1, ...domains.map((d) => d.total));
-const summary = datasets.map((ds) => `${ds.short} ${ds.total}`).join(" · ");
+// Count domains, not directions: how many of the domains each live dataset already has tasks in.
+const live = datasets.filter((ds) => ds.status === "live");
+const covered = domains.filter((d) => live.some((ds) => d.counts[ds.id] > 0)).length;
+const summary = live.map((ds) => `${ds.short} ${domains.filter((d) => d.counts[ds.id] > 0).length} 个领域`).join(" · ");
 const breakdown = (d) => datasets.map((ds) => `${ds.short} ${d.counts[ds.id]}`).join(" · ");
 
-// Deal sub-fields across three rows so neighbours in a row come from different domains.
-const all = domains.flatMap((d) => [...d.subfields, ...d.topics].map((name) => ({ name, domain: d.name })));
+// The moving rows list sub-fields only (no task titles). Deal them across three rows so
+// neighbours in a row come from different domains.
+const all = domains.flatMap((d) => d.subfields.map((name) => ({ name, domain: d.name })));
 const rows = [0, 1, 2].map((r) => all.filter((_, i) => i % 3 === r));
 </script>
