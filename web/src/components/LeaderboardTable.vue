@@ -4,29 +4,30 @@
       <thead>
         <tr>
           <th class="c-rank">#</th>
-          <th class="c-sys">系统</th>
-          <th class="c-score">均分</th>
+          <th class="c-sys">模型</th>
+          <th v-if="hasHarness" class="c-harness">Harness</th>
+          <th class="c-score" :aria-sort="ariaSort('score')"><button type="button" class="sort" @click="sortBy('score')">均分<i :class="arrow('score')"></i></button></th>
           <th v-for="d in domains" :key="d" class="c-dom" :title="domainLabels[d] || d">{{ (domainLabels[d] || d).slice(0, 2) }}</th>
           <th class="c-new" title="分数达到 50（原论文证据水平）的题数">New</th>
           <th class="c-meta">题数</th>
           <template v-if="!pass5">
-            <th class="c-meta">单题成本</th>
-            <th class="c-meta">单题用时</th>
+            <th class="c-meta" :aria-sort="ariaSort('cost_usd')"><button type="button" class="sort" @click="sortBy('cost_usd')">单题成本<i :class="arrow('cost_usd')"></i></button></th>
+            <th class="c-meta" :aria-sort="ariaSort('duration_seconds')"><button type="button" class="sort" @click="sortBy('duration_seconds')">单题用时<i :class="arrow('duration_seconds')"></i></button></th>
             <th class="c-src">来源</th>
           </template>
           <th v-else class="c-meta c-spread" title="五次尝试的单题平均分 ± 标准差">单次均值 ± σ</th>
         </tr>
       </thead>
       <tbody>
-        <template v-for="row in rows" :key="row.run_id">
+        <template v-for="row in sorted" :key="row.run_id">
           <tr class="lb-row" :class="{ open: openId === row.run_id }" @click="toggle(row.run_id)">
             <td class="c-rank"><span class="rank" :class="`r${row.rank}`">{{ row.rank }}</span></td>
             <td class="c-sys">
-              <span class="sys">
-                <a v-if="row.source_url" :href="row.source_url" target="_blank" rel="noreferrer" @click.stop>{{ row.system }}</a>
-                <template v-else>{{ row.system }}</template>
-              </span>
-              <span v-if="row.model" class="model">{{ row.model }}</span>
+              <span class="sys">{{ modelOf(row) }}</span>
+            </td>
+            <td v-if="hasHarness" class="c-harness">
+              <a v-if="row.source_url" :href="row.source_url" target="_blank" rel="noreferrer" @click.stop>{{ harnessOf(row) }}</a>
+              <template v-else>{{ harnessOf(row) }}</template>
             </td>
             <td class="c-score"><span class="score">{{ row.score.toFixed(2) }}</span></td>
             <td v-for="d in domains" :key="d" class="c-dom">
@@ -49,7 +50,7 @@
             <td v-else class="c-meta c-spread">{{ row.attempt_mean.toFixed(1) }} ± {{ row.attempt_std.toFixed(1) }}</td>
           </tr>
           <tr v-if="openId === row.run_id" class="lb-detail">
-            <td :colspan="(pass5 ? 6 : 8) + domains.length">
+            <td :colspan="(pass5 ? 6 : 8) + domains.length + (hasHarness ? 1 : 0)">
               <p v-if="newTasks(row).length" class="strip-new">
                 <b>New-Discovery</b>
                 <router-link v-for="t in newTasks(row)" :key="t.task_id" :to="`/${bench}/${version}/tasks/${t.task_id}`" @click.stop>
@@ -108,11 +109,42 @@ const props = defineProps({
   version: { type: String, default: "" },
   // "pass1": one run per task. "pass5": best of five; rows carry their own tasks.
   mode: { type: String, default: "pass1" },
+  // Harness shared by rows that are bare models (RCB: ResearchHarness).
+  sharedHarness: { type: String, default: "" },
 });
 defineEmits(["open"]);
 const pass5 = computed(() => props.mode === "pass5");
 
 const openId = ref("");
+
+// Model is the main column. A row with a separate model ran inside a named harness (an agent);
+// a row without one is a model run in the bench's shared harness.
+const modelOf = (row) => row.model || row.system;
+const harnessOf = (row) => (row.model ? row.system : props.sharedHarness);
+const hasHarness = computed(() => !pass5.value && props.rows.some((r) => r.model || props.sharedHarness));
+
+// Sort by score (default, the official rank), cost or time. Ranks stay as published.
+const sortKey = ref("score");
+const sortDir = ref("desc");
+function sortBy(key) {
+  if (sortKey.value === key) sortDir.value = sortDir.value === "desc" ? "asc" : "desc";
+  else {
+    sortKey.value = key;
+    sortDir.value = key === "score" ? "desc" : "asc";
+  }
+}
+const sorted = computed(() => {
+  if (sortKey.value === "score" && sortDir.value === "desc") return props.rows;
+  const k = sortKey.value;
+  const sign = sortDir.value === "desc" ? -1 : 1;
+  return [...props.rows].sort((a, b) => {
+    if (a[k] == null) return 1;
+    if (b[k] == null) return -1;
+    return sign * (a[k] - b[k]) || a.rank - b.rank;
+  });
+});
+const ariaSort = (k) => (sortKey.value === k ? (sortDir.value === "desc" ? "descending" : "ascending") : "none");
+const arrow = (k) => (sortKey.value === k ? `arr ${sortDir.value}` : "arr");
 const fullCount = computed(() => Math.max(0, ...props.rows.map((r) => r.task_count)));
 
 function toggle(id) {

@@ -1,6 +1,7 @@
 {
   "version": "1.0",
   "source": "InternScience/ResearchClawBench-Home data/leaderboard.json",
+  "updated": "2026-11-05",
   "note": "均分取已评分题目的平均。大模型与智能体分开排名。",
   "domains": [
     "Astronomy",
@@ -19,6 +20,7 @@
       "id": "llm",
       "label": "大模型",
       "en": "Models",
+      "harness": "ResearchHarness",
       "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。"
     },
     {

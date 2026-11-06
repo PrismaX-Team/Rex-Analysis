@@ -426,3 +426,99 @@ table.lb .c-new { width: 52px; text-align: center; }
 .heat-legend .lg-new { margin-left: 10px; color: var(--zone-new); }
 .heat-legend .lg-note { margin-left: 14px; }
 .strip-keys { display: inline-flex; flex-wrap: wrap; gap: 16px; }
+
+// Header line above the table: count + data date.
+.lb-meta { margin: 14px 0 0; font-family: var(--code); font-size: 12.5px; color: var(--muted); }
+
+// Model / harness columns and sortable headers.
+table.lb .c-harness { min-width: 130px; font-size: 13px; color: var(--muted); white-space: nowrap; }
+table.lb .c-harness a { color: inherit; text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent); }
+table.lb .c-harness a:hover { color: var(--accent); }
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  &:hover { color: var(--accent); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+}
+.arr {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.25;
+  &.desc { opacity: 1; }
+  &.asc { opacity: 1; transform: rotate(180deg); }
+}
+
+// Score vs cost scatter, under the table.
+.cc {
+  margin: 28px 0 0;
+  padding: 20px 22px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  backdrop-filter: blur(10px);
+}
+.cc-head {
+  h2 { margin: 0 0 4px; font-family: var(--display); font-size: 19px; font-weight: 600; }
+  p { margin: 0 0 8px; max-width: 760px; font-size: 13px; line-height: 1.7; color: var(--muted); }
+}
+.cc-plot { position: relative; }
+.cc svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cc-grid {
+  line { stroke: var(--line); stroke-width: 1; }
+  text { font-family: var(--code); font-size: 11px; fill: var(--muted); }
+}
+.cc-axis { font-size: 12px; fill: var(--muted); }
+.cc-front { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.cc-dots circle {
+  fill: color-mix(in srgb, var(--muted) 55%, transparent);
+  stroke: var(--paper-solid);
+  stroke-width: 2;
+  transition: opacity 150ms ease;
+  &.front { fill: var(--accent); }
+  &.dim { opacity: 0.35; }
+  &.hot { stroke: var(--ink); }
+}
+.cc-labels text { font-size: 12px; fill: var(--body-ink); pointer-events: none; }
+.cc-hit { fill: transparent; cursor: pointer; outline: none; }
+.cc-tip {
+  position: absolute;
+  z-index: 2;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 200px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--readout-bg);
+  color: var(--readout-ink);
+  font-size: 12.5px;
+  pointer-events: none;
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.5);
+  b { font-family: var(--display); font-size: 18px; }
+  .cc-tip-name { font-weight: 600; }
+  .cc-tip-front { color: #a5b4ff; }
+}
+.cc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  span { display: inline-flex; align-items: center; gap: 6px; }
+  .k-front { width: 16px; height: 2px; background: var(--accent); }
+  .k-dot { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .k-size { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--muted); }
+}

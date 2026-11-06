@@ -31,6 +31,7 @@ SOURCE_URLS = {
 }
 HOME = "https://internscience.github.io/ResearchClawBench-Home/"
 # Fields that must never reach content/ (architecture §7).
+UPDATED = ""  # snapshot fetch date from the lock file; set in main()
 FORBIDDEN = ("checklist", "target_study", "paper.pdf", "tolerance")
 
 
@@ -117,11 +118,12 @@ def build_v1(src: Path) -> None:
     board = {
         "version": "1.0",
         "source": "InternScience/ResearchClawBench-Home data/leaderboard.json",
+        "updated": UPDATED,
         "note": "均分取已评分题目的平均。大模型与智能体分开排名。",
         "domains": domains,
         # Models come first: the home carousel, the overall table and the leaderboard's default tab all read groups[0].
         "groups": [
-            {"id": "llm", "label": "大模型", "en": "Models", "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。"},
+            {"id": "llm", "label": "大模型", "en": "Models", "harness": "ResearchHarness", "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。"},
             {"id": "agent", "label": "智能体", "en": "Agents"},
         ],
         "frontier": frontier,
@@ -255,6 +257,8 @@ def build_v1_pass5(src: Path) -> None:
 
 def main() -> None:
     lock = json.loads((ROOT / "sources" / "content.lock.json").read_text())
+    global UPDATED
+    UPDATED = lock["rcb"]["1.0"]["leaderboard"].get("fetched", "")
     build_v1(ROOT / lock["rcb"]["1.0"]["leaderboard"]["path"])
     if "pass5" in lock["rcb"]["1.0"]:
         build_v1_pass5(ROOT / lock["rcb"]["1.0"]["pass5"]["path"])
