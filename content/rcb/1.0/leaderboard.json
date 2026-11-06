@@ -1,0 +1,1193 @@
+{
+  "version": "1.0",
+  "source": "InternScience/ResearchClawBench-Home data/leaderboard.json",
+  "note": "均分取已评分题目的平均。大模型与智能体分开排名。",
+  "domains": [
+    "Astronomy",
+    "Chemistry",
+    "Earth",
+    "Energy",
+    "Information",
+    "Life",
+    "Material",
+    "Math",
+    "Neuroscience",
+    "Physics"
+  ],
+  "groups": [
+    {
+      "id": "llm",
+      "label": "大模型",
+      "en": "Models",
+      "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。"
+    },
+    {
+      "id": "agent",
+      "label": "智能体",
+      "en": "Agents"
+    }
+  ],
+  "frontier": {
+    "Astronomy_000": {
+      "score": 46.5,
+      "run_id": "qiushi-engine"
+    },
+    "Astronomy_001": {
+      "score": 48.0,
+      "run_id": "qiushi-engine"
+    },
+    "Astronomy_002": {
+      "score": 35.3,
+      "run_id": "open-science"
+    },
+    "Astronomy_003": {
+      "score": 62.0,
+      "run_id": "evolab"
+    },
+    "Chemistry_000": {
+      "score": 39.8,
+      "run_id": "qiushi-engine"
+    },
+    "Chemistry_001": {
+      "score": 22.75,
+      "run_id": "evolab"
+    },
+    "Chemistry_002": {
+      "score": 39.15,
+      "run_id": "qiushi-engine"
+    },
+    "Chemistry_003": {
+      "score": 46.9,
+      "run_id": "innoclaw-2-0"
+    },
+    "Earth_000": {
+      "score": 48.8,
+      "run_id": "qiushi-engine"
+    },
+    "Earth_001": {
+      "score": 48.0,
+      "run_id": "qiushi-engine"
+    },
+    "Earth_002": {
+      "score": 47.2,
+      "run_id": "qiushi-engine"
+    },
+    "Earth_003": {
+      "score": 33.4,
+      "run_id": "qiushi-engine"
+    },
+    "Energy_000": {
+      "score": 31.9,
+      "run_id": "qiushi-engine"
+    },
+    "Energy_001": {
+      "score": 45.2,
+      "run_id": "evolab"
+    },
+    "Energy_002": {
+      "score": 48.75,
+      "run_id": "jiutian-deepinsight"
+    },
+    "Energy_003": {
+      "score": 61.4,
+      "run_id": "qiushi-engine"
+    },
+    "Information_000": {
+      "score": 52.9,
+      "run_id": "qiushi-engine"
+    },
+    "Information_001": {
+      "score": 50.8,
+      "run_id": "evolab"
+    },
+    "Information_002": {
+      "score": 58.0,
+      "run_id": "innoclaw-2-0"
+    },
+    "Information_003": {
+      "score": 44.9,
+      "run_id": "ligase"
+    },
+    "Life_000": {
+      "score": 43.6,
+      "run_id": "qiushi-engine"
+    },
+    "Life_001": {
+      "score": 43.4,
+      "run_id": "ligase"
+    },
+    "Life_002": {
+      "score": 42.8,
+      "run_id": "evolab"
+    },
+    "Life_003": {
+      "score": 46.1,
+      "run_id": "qiushi-engine"
+    },
+    "Material_000": {
+      "score": 34.5,
+      "run_id": "innoclaw"
+    },
+    "Material_001": {
+      "score": 53.45,
+      "run_id": "qiushi-engine"
+    },
+    "Material_002": {
+      "score": 47.01,
+      "run_id": "ligase"
+    },
+    "Material_003": {
+      "score": 47.25,
+      "run_id": "ligase"
+    },
+    "Math_000": {
+      "score": 35.9,
+      "run_id": "researchharness-claude-opus-4-8"
+    },
+    "Math_001": {
+      "score": 57.1,
+      "run_id": "qiushi-engine"
+    },
+    "Math_002": {
+      "score": 42.6,
+      "run_id": "ligase"
+    },
+    "Math_003": {
+      "score": 38.75,
+      "run_id": "ligase"
+    },
+    "Neuroscience_000": {
+      "score": 25.8,
+      "run_id": "innoclaw-2-0"
+    },
+    "Neuroscience_001": {
+      "score": 49.55,
+      "run_id": "ligase"
+    },
+    "Neuroscience_002": {
+      "score": 42.65,
+      "run_id": "ligase"
+    },
+    "Neuroscience_003": {
+      "score": 50.78,
+      "run_id": "autoscirub"
+    },
+    "Physics_000": {
+      "score": 53.0,
+      "run_id": "qiushi-engine"
+    },
+    "Physics_001": {
+      "score": 49.0,
+      "run_id": "open-science"
+    },
+    "Physics_002": {
+      "score": 53.85,
+      "run_id": "evolab"
+    },
+    "Physics_003": {
+      "score": 65.6,
+      "run_id": "evolab"
+    }
+  },
+  "rows": [
+    {
+      "run_id": "researchharness-claude-opus-4-8",
+      "group": "llm",
+      "system": "Claude-Opus-4.8",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 21.12,
+      "task_count": 39,
+      "date": "2026-06-02",
+      "cost_usd": 3.974,
+      "duration_seconds": 1192,
+      "domains": {
+        "Astronomy": 34.15,
+        "Chemistry": 17.93,
+        "Earth": 21.91,
+        "Energy": 18.46,
+        "Information": 20.25,
+        "Life": 13.16,
+        "Material": 24.68,
+        "Math": 16.43,
+        "Neuroscience": 4.46,
+        "Physics": 38.94
+      },
+      "new_count": 0,
+      "rank": 1
+    },
+    {
+      "run_id": "researchharness-glm-5-2",
+      "group": "llm",
+      "system": "GLM-5.2",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 20.71,
+      "task_count": 39,
+      "date": "2026-06-23",
+      "cost_usd": 1.238,
+      "duration_seconds": 2540,
+      "domains": {
+        "Astronomy": 36.33,
+        "Chemistry": 9.14,
+        "Earth": 19.1,
+        "Energy": 23.31,
+        "Information": 11.11,
+        "Life": 17.65,
+        "Material": 22.34,
+        "Math": 26.43,
+        "Neuroscience": 9.65,
+        "Physics": 35.82
+      },
+      "new_count": 0,
+      "rank": 2
+    },
+    {
+      "run_id": "researchharness-claude-opus-4-7",
+      "group": "llm",
+      "system": "Claude-Opus-4.7",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 20.74,
+      "task_count": 35,
+      "date": "2026-04-28",
+      "cost_usd": 5.061,
+      "duration_seconds": 1518,
+      "domains": {
+        "Astronomy": 32.9,
+        "Chemistry": 4.2,
+        "Earth": 22.51,
+        "Energy": 23.2,
+        "Information": 13.9,
+        "Life": 12.82,
+        "Material": 24.14,
+        "Math": 18.92,
+        "Neuroscience": 9.68,
+        "Physics": 34.21
+      },
+      "new_count": 0,
+      "rank": 3
+    },
+    {
+      "run_id": "researchharness-claude-opus-4-6",
+      "group": "llm",
+      "system": "Claude-Opus-4.6",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 19.87,
+      "task_count": 37,
+      "date": "2026-04-17",
+      "cost_usd": 6.047,
+      "duration_seconds": 1814,
+      "domains": {
+        "Astronomy": 35.07,
+        "Chemistry": 7.24,
+        "Earth": 30.41,
+        "Energy": 25.96,
+        "Information": 12.81,
+        "Life": 12.69,
+        "Material": 19.98,
+        "Math": 22.39,
+        "Neuroscience": 7.35,
+        "Physics": 35.0
+      },
+      "new_count": 0,
+      "rank": 4
+    },
+    {
+      "run_id": "researchharness-minimax-m3",
+      "group": "llm",
+      "system": "MiniMax-M3",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 19.82,
+      "task_count": 38,
+      "date": "2026-06-08",
+      "cost_usd": 0.449,
+      "duration_seconds": 2565,
+      "domains": {
+        "Astronomy": 30.55,
+        "Chemistry": 11.95,
+        "Earth": 18.72,
+        "Energy": 23.96,
+        "Information": 13.23,
+        "Life": 12.7,
+        "Material": 17.3,
+        "Math": 21.71,
+        "Neuroscience": 8.53,
+        "Physics": 35.08
+      },
+      "new_count": 0,
+      "rank": 5
+    },
+    {
+      "run_id": "researchharness-qwen3-7-max",
+      "group": "llm",
+      "system": "Qwen3.7-Max",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 18.71,
+      "task_count": 34,
+      "date": "2026-05-27",
+      "cost_usd": 0.417,
+      "duration_seconds": 668,
+      "domains": {
+        "Astronomy": 23.78,
+        "Chemistry": 6.91,
+        "Earth": 14.84,
+        "Energy": 25.28,
+        "Information": 21.82,
+        "Life": 10.3,
+        "Material": 23.88,
+        "Math": 22.34,
+        "Neuroscience": 6.97,
+        "Physics": 38.3
+      },
+      "new_count": 0,
+      "rank": 6
+    },
+    {
+      "run_id": "researchharness-glm-5-1",
+      "group": "llm",
+      "system": "GLM-5.1",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 18.19,
+      "task_count": 40,
+      "date": "2026-04-16",
+      "cost_usd": 1.299,
+      "duration_seconds": 1813,
+      "domains": {
+        "Astronomy": 29.75,
+        "Chemistry": 11.4,
+        "Earth": 20.56,
+        "Energy": 20.39,
+        "Information": 16.24,
+        "Life": 12.2,
+        "Material": 18.64,
+        "Math": 17.96,
+        "Neuroscience": 5.85,
+        "Physics": 28.93
+      },
+      "new_count": 0,
+      "rank": 7
+    },
+    {
+      "run_id": "researchharness-qwen3-6-plus",
+      "group": "llm",
+      "system": "Qwen3.6-Plus",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 18.0,
+      "task_count": 40,
+      "date": "2026-04-15",
+      "cost_usd": 0.518,
+      "duration_seconds": 1382,
+      "domains": {
+        "Astronomy": 30.77,
+        "Chemistry": 7.71,
+        "Earth": 16.61,
+        "Energy": 21.19,
+        "Information": 17.66,
+        "Life": 12.1,
+        "Material": 19.56,
+        "Math": 19.05,
+        "Neuroscience": 4.64,
+        "Physics": 30.66
+      },
+      "new_count": 0,
+      "rank": 8
+    },
+    {
+      "run_id": "researchharness-kimi-k2-6",
+      "group": "llm",
+      "system": "Kimi-K2.6",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 18.0,
+      "task_count": 38,
+      "date": "2026-05-19",
+      "cost_usd": 1.188,
+      "duration_seconds": 2081,
+      "domains": {
+        "Astronomy": 27.8,
+        "Chemistry": 3.08,
+        "Earth": 22.86,
+        "Energy": 18.07,
+        "Information": 12.76,
+        "Life": 13.81,
+        "Material": 22.33,
+        "Math": 19.48,
+        "Neuroscience": 8.35,
+        "Physics": 23.95
+      },
+      "new_count": 0,
+      "rank": 9
+    },
+    {
+      "run_id": "researchharness-gemini-3-5-flash",
+      "group": "llm",
+      "system": "Gemini-3.5-Flash",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 17.95,
+      "task_count": 34,
+      "date": "2026-05-27",
+      "cost_usd": 1.204,
+      "duration_seconds": 1070,
+      "domains": {
+        "Astronomy": 28.07,
+        "Chemistry": 5.5,
+        "Earth": 24.05,
+        "Energy": 18.35,
+        "Information": 24.1,
+        "Life": 13.36,
+        "Material": 19.73,
+        "Math": 22.0,
+        "Neuroscience": 2.19,
+        "Physics": 26.82
+      },
+      "new_count": 0,
+      "rank": 10
+    },
+    {
+      "run_id": "researchharness-deepseek-v4-pro",
+      "group": "llm",
+      "system": "DeepSeek-V4-Pro",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 17.12,
+      "task_count": 39,
+      "date": "2026-05-18",
+      "cost_usd": 0.278,
+      "duration_seconds": 1533,
+      "domains": {
+        "Astronomy": 25.2,
+        "Chemistry": 7.53,
+        "Earth": 20.14,
+        "Energy": 21.79,
+        "Information": 4.62,
+        "Life": 13.29,
+        "Material": 24.64,
+        "Math": 17.92,
+        "Neuroscience": 7.67,
+        "Physics": 28.62
+      },
+      "new_count": 0,
+      "rank": 11
+    },
+    {
+      "run_id": "researchharness-gpt-5-5",
+      "group": "llm",
+      "system": "GPT-5.5",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 17.0,
+      "task_count": 40,
+      "date": "2026-04-29",
+      "cost_usd": 1.822,
+      "duration_seconds": 486,
+      "domains": {
+        "Astronomy": 23.98,
+        "Chemistry": 10.4,
+        "Earth": 18.36,
+        "Energy": 22.65,
+        "Information": 17.84,
+        "Life": 11.84,
+        "Material": 14.66,
+        "Math": 13.06,
+        "Neuroscience": 6.34,
+        "Physics": 30.86
+      },
+      "new_count": 0,
+      "rank": 12
+    },
+    {
+      "run_id": "researchharness-mimo-v2-5",
+      "group": "llm",
+      "system": "MiMo-V2.5",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 16.91,
+      "task_count": 39,
+      "date": "2026-05-18",
+      "cost_usd": 0.229,
+      "duration_seconds": 819,
+      "domains": {
+        "Astronomy": 24.4,
+        "Chemistry": 4.42,
+        "Earth": 15.91,
+        "Energy": 19.52,
+        "Information": 12.3,
+        "Life": 12.77,
+        "Material": 19.18,
+        "Math": 18.2,
+        "Neuroscience": 4.65,
+        "Physics": 34.66
+      },
+      "new_count": 0,
+      "rank": 13
+    },
+    {
+      "run_id": "researchharness-gpt-5-4",
+      "group": "llm",
+      "system": "GPT-5.4",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 15.28,
+      "task_count": 40,
+      "date": "2026-04-15",
+      "cost_usd": 2.125,
+      "duration_seconds": 1133,
+      "domains": {
+        "Astronomy": 22.07,
+        "Chemistry": 6.89,
+        "Earth": 18.83,
+        "Energy": 17.14,
+        "Information": 15.72,
+        "Life": 14.22,
+        "Material": 7.65,
+        "Math": 18.3,
+        "Neuroscience": 4.89,
+        "Physics": 27.05
+      },
+      "new_count": 0,
+      "rank": 14
+    },
+    {
+      "run_id": "researchharness-mimo-v2-pro",
+      "group": "llm",
+      "system": "MiMo-V2-Pro",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 15.34,
+      "task_count": 38,
+      "date": "2026-04-15",
+      "cost_usd": 0.62,
+      "duration_seconds": 1239,
+      "domains": {
+        "Astronomy": 21.75,
+        "Chemistry": 6.31,
+        "Earth": 19.84,
+        "Energy": 12.75,
+        "Information": 9.35,
+        "Life": 12.79,
+        "Material": 21.38,
+        "Math": 13.58,
+        "Neuroscience": 6.24,
+        "Physics": 26.39
+      },
+      "new_count": 0,
+      "rank": 15
+    },
+    {
+      "run_id": "researchharness-qwen3-5-397b-a17b",
+      "group": "llm",
+      "system": "Qwen3.5-397B-A17B",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 14.23,
+      "task_count": 40,
+      "date": "2026-04-16",
+      "cost_usd": 0.577,
+      "duration_seconds": 1282,
+      "domains": {
+        "Astronomy": 17.15,
+        "Chemistry": 7.85,
+        "Earth": 18.32,
+        "Energy": 18.64,
+        "Information": 5.96,
+        "Life": 11.46,
+        "Material": 18.38,
+        "Math": 14.25,
+        "Neuroscience": 4.17,
+        "Physics": 26.14
+      },
+      "new_count": 0,
+      "rank": 16
+    },
+    {
+      "run_id": "researchharness-kimi-k2-5",
+      "group": "llm",
+      "system": "Kimi-K2.5",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 13.96,
+      "task_count": 39,
+      "date": "2026-04-15",
+      "cost_usd": 0.512,
+      "duration_seconds": 1280,
+      "domains": {
+        "Astronomy": 23.35,
+        "Chemistry": 7.64,
+        "Earth": 16.41,
+        "Energy": 13.3,
+        "Information": 9.39,
+        "Life": 11.4,
+        "Material": 13.1,
+        "Math": 16.07,
+        "Neuroscience": 2.96,
+        "Physics": 26.46
+      },
+      "new_count": 0,
+      "rank": 17
+    },
+    {
+      "run_id": "researchharness-grok-4-1",
+      "group": "llm",
+      "system": "Grok-4.1",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 13.5,
+      "task_count": 39,
+      "date": "2026-04-15",
+      "cost_usd": 0.036,
+      "duration_seconds": 390,
+      "domains": {
+        "Astronomy": 28.62,
+        "Chemistry": 2.92,
+        "Earth": 14.95,
+        "Energy": 11.12,
+        "Information": 11.88,
+        "Life": 13.18,
+        "Material": 9.45,
+        "Math": 12.23,
+        "Neuroscience": 4.79,
+        "Physics": 25.56
+      },
+      "new_count": 0,
+      "rank": 18
+    },
+    {
+      "run_id": "researchharness-gemini-3-1-pro",
+      "group": "llm",
+      "system": "Gemini-3.1-Pro",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 13.28,
+      "task_count": 35,
+      "date": "2026-04-16",
+      "cost_usd": 1.6,
+      "duration_seconds": 1067,
+      "domains": {
+        "Astronomy": 19.32,
+        "Chemistry": 7.95,
+        "Earth": 13.84,
+        "Energy": 12.01,
+        "Information": 6.77,
+        "Life": 9.39,
+        "Material": 11.32,
+        "Math": 14.98,
+        "Neuroscience": 1.57,
+        "Physics": 29.73
+      },
+      "new_count": 0,
+      "rank": 19
+    },
+    {
+      "run_id": "researchharness-hy3-preview",
+      "group": "llm",
+      "system": "Hy3-Preview",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 12.88,
+      "task_count": 33,
+      "date": "2026-07-08",
+      "cost_usd": 0.029,
+      "duration_seconds": 858,
+      "domains": {
+        "Astronomy": 13.6,
+        "Chemistry": 15.11,
+        "Earth": 14.24,
+        "Energy": 11.07,
+        "Information": 14.2,
+        "Life": 10.51,
+        "Material": 16.65,
+        "Math": 8.33,
+        "Neuroscience": 1.45,
+        "Physics": 26.43
+      },
+      "new_count": 0,
+      "rank": 20
+    },
+    {
+      "run_id": "researchharness-grok-4-3",
+      "group": "llm",
+      "system": "Grok-4.3",
+      "model": "",
+      "source": "internal",
+      "source_url": "",
+      "score": 12.41,
+      "task_count": 38,
+      "date": "2026-05-18",
+      "cost_usd": 0.438,
+      "duration_seconds": 841,
+      "domains": {
+        "Astronomy": 24.73,
+        "Chemistry": 3.53,
+        "Earth": 15.12,
+        "Energy": 18.85,
+        "Information": 2.51,
+        "Life": 12.47,
+        "Material": 12.34,
+        "Math": 8.5,
+        "Neuroscience": 2.6,
+        "Physics": 28.16
+      },
+      "new_count": 0,
+      "rank": 21
+    },
+    {
+      "run_id": "qiushi-engine",
+      "group": "agent",
+      "system": "Qiushi Engine",
+      "model": "DeepSeek-V4-Pro-Preview",
+      "source": "community",
+      "source_url": "https://oxelra.com/",
+      "score": 38.62,
+      "task_count": 40,
+      "date": "2026-09-08",
+      "cost_usd": 7.634,
+      "duration_seconds": 10530,
+      "domains": {
+        "Astronomy": 42.8,
+        "Chemistry": 30.65,
+        "Earth": 44.35,
+        "Energy": 45.67,
+        "Information": 39.81,
+        "Life": 30.25,
+        "Material": 41.2,
+        "Math": 33.16,
+        "Neuroscience": 32.58,
+        "Physics": 45.69
+      },
+      "new_count": 6,
+      "rank": 1
+    },
+    {
+      "run_id": "innoclaw-2-0",
+      "group": "agent",
+      "system": "InnoClaw (2.0)",
+      "model": "GPT-5.5",
+      "source": "community",
+      "source_url": "https://github.com/SpectrAI-Initiative/InnoClaw",
+      "score": 34.89,
+      "task_count": 40,
+      "date": "2026-09-05",
+      "cost_usd": 8.923,
+      "duration_seconds": 2379,
+      "domains": {
+        "Astronomy": 41.6,
+        "Chemistry": 32.73,
+        "Earth": 27.61,
+        "Energy": 30.43,
+        "Information": 35.99,
+        "Life": 32.84,
+        "Material": 32.41,
+        "Math": 34.24,
+        "Neuroscience": 35.86,
+        "Physics": 45.2
+      },
+      "new_count": 4,
+      "rank": 2
+    },
+    {
+      "run_id": "ligase",
+      "group": "agent",
+      "system": "Ligase",
+      "model": "GPT-5.6-Sol",
+      "source": "community",
+      "source_url": "https://gradence.com.cn/products/wecode.html#biopharma",
+      "score": 34.8,
+      "task_count": 40,
+      "date": "2026-08-31",
+      "cost_usd": 7.652,
+      "duration_seconds": 2869,
+      "domains": {
+        "Astronomy": 37.35,
+        "Chemistry": 22.86,
+        "Earth": 34.26,
+        "Energy": 29.94,
+        "Information": 40.05,
+        "Life": 32.52,
+        "Material": 35.05,
+        "Math": 39.66,
+        "Neuroscience": 35.34,
+        "Physics": 40.98
+      },
+      "new_count": 0,
+      "rank": 3
+    },
+    {
+      "run_id": "autoscirub",
+      "group": "agent",
+      "system": "AutoSciRub",
+      "model": "Codex GPT-5.6-Sol",
+      "source": "community",
+      "source_url": "https://github.com/zjunlp/AutoSciRub",
+      "score": 33.16,
+      "task_count": 40,
+      "date": "2026-09-01",
+      "cost_usd": 7.849,
+      "duration_seconds": 2943,
+      "domains": {
+        "Astronomy": 42.27,
+        "Chemistry": 30.08,
+        "Earth": 30.18,
+        "Energy": 31.7,
+        "Information": 33.48,
+        "Life": 26.24,
+        "Material": 34.46,
+        "Math": 28.81,
+        "Neuroscience": 30.01,
+        "Physics": 44.36
+      },
+      "new_count": 3,
+      "rank": 4
+    },
+    {
+      "run_id": "evolab",
+      "group": "agent",
+      "system": "EvoLab",
+      "model": "GPT-5.5",
+      "source": "community",
+      "source_url": "https://evo-lab.org/",
+      "score": 32.69,
+      "task_count": 40,
+      "date": "2026-08-17",
+      "cost_usd": 6.452,
+      "duration_seconds": 1721,
+      "domains": {
+        "Astronomy": 44.8,
+        "Chemistry": 27.49,
+        "Earth": 29.75,
+        "Energy": 33.88,
+        "Information": 38.17,
+        "Life": 28.77,
+        "Material": 24.95,
+        "Math": 27.6,
+        "Neuroscience": 20.15,
+        "Physics": 51.31
+      },
+      "new_count": 5,
+      "rank": 5
+    },
+    {
+      "run_id": "innoclaw",
+      "group": "agent",
+      "system": "InnoClaw",
+      "model": "GPT-5.5",
+      "source": "community",
+      "source_url": "https://github.com/SpectrAI-Initiative/InnoClaw",
+      "score": 28.84,
+      "task_count": 40,
+      "date": "2026-08-05",
+      "cost_usd": 7.104,
+      "duration_seconds": 1895,
+      "domains": {
+        "Astronomy": 41.6,
+        "Chemistry": 18.04,
+        "Earth": 27.61,
+        "Energy": 30.43,
+        "Information": 24.07,
+        "Life": 24.75,
+        "Material": 32.41,
+        "Math": 27.95,
+        "Neuroscience": 16.31,
+        "Physics": 45.2
+      },
+      "new_count": 2,
+      "rank": 6
+    },
+    {
+      "run_id": "jiutian-deepinsight",
+      "group": "agent",
+      "system": "jiutian-DeepInsight",
+      "model": "Qwen3.8-Max",
+      "source": "community",
+      "source_url": "",
+      "score": 28.38,
+      "task_count": 33,
+      "date": "2026-09-22",
+      "cost_usd": 10.361,
+      "duration_seconds": 13955,
+      "domains": {
+        "Astronomy": 30.77,
+        "Chemistry": 23.18,
+        "Earth": 28.75,
+        "Energy": 31.86,
+        "Information": 28.48,
+        "Life": 26.25,
+        "Material": 22.38,
+        "Math": 27.35,
+        "Neuroscience": 21.6,
+        "Physics": 39.46
+      },
+      "new_count": 1,
+      "rank": 7
+    },
+    {
+      "run_id": "open-science",
+      "group": "agent",
+      "system": "Open Science",
+      "model": "Claude-Opus-4.8",
+      "source": "internal",
+      "source_url": "https://github.com/ai4s-research/open-science",
+      "score": 22.8,
+      "task_count": 36,
+      "date": "2026-07-09",
+      "cost_usd": 3.436,
+      "duration_seconds": 1031,
+      "domains": {
+        "Astronomy": 29.35,
+        "Chemistry": 9.78,
+        "Earth": 19.57,
+        "Energy": 18.41,
+        "Information": 20.55,
+        "Life": 16.75,
+        "Material": 25.77,
+        "Math": 27.18,
+        "Neuroscience": 13.35,
+        "Physics": 40.02
+      },
+      "new_count": 0,
+      "rank": 8
+    },
+    {
+      "run_id": "claude-code",
+      "group": "agent",
+      "system": "Claude Code",
+      "model": "Claude-Opus-4.6",
+      "source": "internal",
+      "source_url": "",
+      "score": 21.53,
+      "task_count": 40,
+      "date": "2026-04-02",
+      "cost_usd": 5.251,
+      "duration_seconds": 1575,
+      "domains": {
+        "Astronomy": 30.23,
+        "Chemistry": 9.31,
+        "Earth": 22.71,
+        "Energy": 21.73,
+        "Information": 24.96,
+        "Life": 15.56,
+        "Material": 25.5,
+        "Math": 27.52,
+        "Neuroscience": 5.5,
+        "Physics": 32.3
+      },
+      "new_count": 0,
+      "rank": 9
+    },
+    {
+      "run_id": "evoscientist-0-1-1",
+      "group": "agent",
+      "system": "EvoScientist (0.1.1)",
+      "model": "GPT-5.4",
+      "source": "community",
+      "source_url": "https://github.com/EvoScientist/EvoScientist",
+      "score": 18.76,
+      "task_count": 40,
+      "date": "2026-06-03",
+      "cost_usd": 4.082,
+      "duration_seconds": 2177,
+      "domains": {
+        "Astronomy": 26.38,
+        "Chemistry": 9.94,
+        "Earth": 18.84,
+        "Energy": 19.9,
+        "Information": 18.88,
+        "Life": 16.69,
+        "Material": 15.15,
+        "Math": 15.47,
+        "Neuroscience": 11.44,
+        "Physics": 34.95
+      },
+      "new_count": 1,
+      "rank": 10
+    },
+    {
+      "run_id": "codex-cli",
+      "group": "agent",
+      "system": "Codex CLI",
+      "model": "GPT-5.4",
+      "source": "internal",
+      "source_url": "",
+      "score": 18.42,
+      "task_count": 40,
+      "date": "2026-04-02",
+      "cost_usd": 2.012,
+      "duration_seconds": 1073,
+      "domains": {
+        "Astronomy": 26.52,
+        "Chemistry": 7.62,
+        "Earth": 22.19,
+        "Energy": 23.05,
+        "Information": 17.0,
+        "Life": 14.44,
+        "Material": 12.96,
+        "Math": 20.76,
+        "Neuroscience": 8.59,
+        "Physics": 31.05
+      },
+      "new_count": 0,
+      "rank": 11
+    },
+    {
+      "run_id": "openclaw",
+      "group": "agent",
+      "system": "OpenClaw",
+      "model": "GPT-5.4",
+      "source": "internal",
+      "source_url": "",
+      "score": 16.64,
+      "task_count": 40,
+      "date": "2026-04-03",
+      "cost_usd": 0.686,
+      "duration_seconds": 366,
+      "domains": {
+        "Astronomy": 28.38,
+        "Chemistry": 5.96,
+        "Earth": 17.3,
+        "Energy": 22.0,
+        "Information": 14.03,
+        "Life": 15.74,
+        "Material": 12.92,
+        "Math": 14.3,
+        "Neuroscience": 8.25,
+        "Physics": 27.56
+      },
+      "new_count": 0,
+      "rank": 12
+    },
+    {
+      "run_id": "researchclaw",
+      "group": "agent",
+      "system": "ResearchClaw",
+      "model": "GPT-5.4",
+      "source": "internal",
+      "source_url": "",
+      "score": 16.28,
+      "task_count": 40,
+      "date": "2026-04-10",
+      "cost_usd": 0.816,
+      "duration_seconds": 435,
+      "domains": {
+        "Astronomy": 23.05,
+        "Chemistry": 8.47,
+        "Earth": 17.07,
+        "Energy": 19.01,
+        "Information": 14.9,
+        "Life": 13.99,
+        "Material": 19.26,
+        "Math": 12.8,
+        "Neuroscience": 4.16,
+        "Physics": 30.12
+      },
+      "new_count": 0,
+      "rank": 13
+    },
+    {
+      "run_id": "evoscientist-0-0-4",
+      "group": "agent",
+      "system": "EvoScientist (0.0.4)",
+      "model": "GPT-5.4",
+      "source": "internal",
+      "source_url": "https://github.com/EvoScientist/EvoScientist",
+      "score": 15.47,
+      "task_count": 40,
+      "date": "2026-04-04",
+      "cost_usd": 1.194,
+      "duration_seconds": 637,
+      "domains": {
+        "Astronomy": 25.97,
+        "Chemistry": 4.42,
+        "Earth": 16.97,
+        "Energy": 24.0,
+        "Information": 7.41,
+        "Life": 16.44,
+        "Material": 13.45,
+        "Math": 14.33,
+        "Neuroscience": 5.33,
+        "Physics": 26.34
+      },
+      "new_count": 0,
+      "rank": 14
+    },
+    {
+      "run_id": "aris-codex",
+      "group": "agent",
+      "system": "ARIS Codex",
+      "model": "GPT-5.4",
+      "source": "internal",
+      "source_url": "https://github.com/wanshuiyin/auto-claude-code-research-in-sleep",
+      "score": 13.58,
+      "task_count": 40,
+      "date": "2026-04-09",
+      "cost_usd": 0.743,
+      "duration_seconds": 396,
+      "domains": {
+        "Astronomy": 21.32,
+        "Chemistry": 7.4,
+        "Earth": 15.09,
+        "Energy": 13.59,
+        "Information": 6.0,
+        "Life": 16.94,
+        "Material": 12.44,
+        "Math": 11.4,
+        "Neuroscience": 6.91,
+        "Physics": 24.68
+      },
+      "new_count": 0,
+      "rank": 15
+    },
+    {
+      "run_id": "nanobot",
+      "group": "agent",
+      "system": "Nanobot",
+      "model": "GPT-5.4",
+      "source": "internal",
+      "source_url": "https://github.com/HKUDS/nanobot",
+      "score": 12.81,
+      "task_count": 40,
+      "date": "2026-04-01",
+      "cost_usd": 0.488,
+      "duration_seconds": 260,
+      "domains": {
+        "Astronomy": 22.27,
+        "Chemistry": 6.21,
+        "Earth": 14.33,
+        "Energy": 13.49,
+        "Information": 11.1,
+        "Life": 12.95,
+        "Material": 13.0,
+        "Math": 12.07,
+        "Neuroscience": 3.31,
+        "Physics": 19.35
+      },
+      "new_count": 0,
+      "rank": 16
+    }
+  ]
+}

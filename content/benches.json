@@ -1,0 +1,50 @@
+{
+  "note": "顶层站点上展示的 bench 清单。顺序即首页顺序。placeholders 是首页 Benchmarks 区为后续 bench 预留的空位数量。carousel 是首页榜单轮播最多几张：live 的 bench 先放，不够时用占位补齐。category 是总榜里的分类标签；version 是总榜和轮播读哪一版的榜；github 是这个 bench 自己的仓库，只在它的页面上出现。 launched 是上线月份（YYYY-MM），首页顶部的提示条显示最新上线的那个 bench 和它的月份。",
+  "benches": [
+    {
+      "id": "rcb",
+      "slug": "rcb",
+      "name": "ResearchClaw Bench",
+      "short": "RCB",
+      "tagline": "智能体复现一篇论文",
+      "summary": "把一篇论文拆成任务包：题面、数据、相关工作都给智能体，答案藏在隐藏的评分清单里。公开 40 题覆盖 10 个学科，由方法线连成一张网。",
+      "status": "live",
+      "entry": "/rcb",
+      "task_type": "任务包 · 开放域复现",
+      "scoring": "RADS 0–100",
+      "accent": "#2f4bff",
+      "accent_dark": "#6f86ff",
+      "category": "科研智能体",
+      "version": "1.0",
+      "github": "https://github.com/InternScience/ResearchClawBench",
+      "tasks_lede": "每道题来自一篇论文：题面、数据和相关工作公开，评分材料不在这个站上。",
+      "board_lede": "按均分排名，每格颜色表示该学科的平均分。点一行展开分题成绩。",
+      "private_note": "评分清单、目标论文和参考图不在这个站上。",
+      "launched": "2026-10"
+    },
+    {
+      "id": "afe",
+      "slug": "afe",
+      "name": "AgentFrontierExam 1.0",
+      "short": "AFE1.0",
+      "tagline": "在最优解尚未明确的科学前沿，衡量真正的创新能力",
+      "summary": "Agent Frontier Exam 评测研究 Agent 能否面向真实、尚未解决的前沿科学问题，在开放的环境中自主调研，提出并验证改进方案，取得可衡量的进展，推进问题的边界。",
+      "status": "live",
+      "entry": "/afe",
+      "version": "1.0",
+      "task_type": "五部分任务包",
+      "scoring": "确定性验证",
+      "category": "科研智能体",
+      "accent": "#0e8a6f",
+      "accent_dark": "#2fc79f",
+      "github": "https://github.com/PrismaX-Team/AgentFrontierExam-Tasks",
+      "tasks_lede": "浏览 Agent Frontier Exam 中的科学问题、任务合同与评测环境。",
+      "board_lede": "每个结果都相对于其他 Agent 和当前前沿进行衡量。",
+      "board_empty": "暂无公开成绩。可以先浏览任务。",
+      "private_note": "Verifier 在运行前冻结，并在离线环境中评分。",
+      "launched": "2026-11"
+    }
+  ],
+  "placeholders": 2,
+  "carousel": 3
+}

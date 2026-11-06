@@ -1,0 +1,252 @@
+{
+  "version": "1.0",
+  "note": "首页星图。人工整理：每题一个短名；方法线把共享同一方法或研究对象的题连起来，跨越学科。只用公开题面。",
+  "domains": [
+    {
+      "id": "Astronomy",
+      "label": "天文学",
+      "en": "Astronomy",
+      "color": "#6a4cff",
+      "color_dark": "#8c75ff"
+    },
+    {
+      "id": "Physics",
+      "label": "物理",
+      "en": "Physics",
+      "color": "#2f6bff",
+      "color_dark": "#4e81ff"
+    },
+    {
+      "id": "Material",
+      "label": "材料",
+      "en": "Materials",
+      "color": "#0a9ec2",
+      "color_dark": "#05a1c7"
+    },
+    {
+      "id": "Chemistry",
+      "label": "化学",
+      "en": "Chemistry",
+      "color": "#0e9f86",
+      "color_dark": "#0aa388"
+    },
+    {
+      "id": "Life",
+      "label": "生命科学",
+      "en": "Life",
+      "color": "#35a24a",
+      "color_dark": "#32a548"
+    },
+    {
+      "id": "Neuroscience",
+      "label": "神经科学",
+      "en": "Neuroscience",
+      "color": "#cf9a00",
+      "color_dark": "#cf9a00"
+    },
+    {
+      "id": "Information",
+      "label": "信息科学",
+      "en": "Information",
+      "color": "#ef6a24",
+      "color_dark": "#f4681f"
+    },
+    {
+      "id": "Math",
+      "label": "数学",
+      "en": "Mathematics",
+      "color": "#e3406c",
+      "color_dark": "#ea537b"
+    },
+    {
+      "id": "Energy",
+      "label": "能源",
+      "en": "Energy",
+      "color": "#bf3bcf",
+      "color_dark": "#cc59da"
+    },
+    {
+      "id": "Earth",
+      "label": "地球科学",
+      "en": "Earth",
+      "color": "#9a6b34",
+      "color_dark": "#b87e3a"
+    }
+  ],
+  "labels": {
+    "Astronomy_000": "超轻玻色子约束",
+    "Astronomy_001": "早期暗能量与 BAO",
+    "Astronomy_002": "1% 哈勃常数",
+    "Astronomy_003": "双黑洞数值相对论",
+    "Chemistry_000": "KA-GNN 分子性质",
+    "Chemistry_001": "生物分子复合物结构",
+    "Chemistry_002": "HADDOCK3 对接",
+    "Chemistry_003": "隐电荷势函数",
+    "Earth_000": "全球冰川质量变化",
+    "Earth_001": "人工增雨记录复现",
+    "Earth_002": "红树林气候风险",
+    "Earth_003": "15 天全球天气预报",
+    "Energy_000": "电池老化参数辨识",
+    "Energy_001": "英国电网调度",
+    "Energy_002": "非洲绿氢成本",
+    "Energy_003": "校园能耗数据集",
+    "Information_000": "统一多模态生成",
+    "Information_001": "MLLM 细粒度感知",
+    "Information_002": "LLM 做 Hartree-Fock",
+    "Information_003": "网络入侵检测",
+    "Life_000": "仿生水凝胶粘附",
+    "Life_001": "个性化新抗原疫苗",
+    "Life_002": "蛋白复合物检索",
+    "Life_003": "纳米孔信号比对",
+    "Material_000": "交错磁材料搜索",
+    "Material_001": "多模态材料 AI",
+    "Material_002": "MACE 原子基础模型",
+    "Material_003": "可回收聚合物逆设计",
+    "Math_000": "拥挤场景多目标跟踪",
+    "Math_001": "加速优化与 ADMM",
+    "Math_002": "多智能体路径规划",
+    "Math_003": "奥赛几何自动证明",
+    "Neuroscience_000": "行为分类流程复现",
+    "Neuroscience_001": "果蝇视觉连接组网络",
+    "Neuroscience_002": "电镜神经元合并",
+    "Neuroscience_003": "单细胞轨迹特征",
+    "Physics_000": "团簇壳层路径",
+    "Physics_001": "魔角石墨烯超流刚度",
+    "Physics_002": "随机量子线路采样",
+    "Physics_003": "石墨烯 Floquet 态"
+  },
+  "threads": [
+    {
+      "id": "graph",
+      "label": "图神经网络",
+      "tasks": [
+        "Chemistry_000",
+        "Material_000",
+        "Material_002",
+        "Material_003",
+        "Information_003"
+      ]
+    },
+    {
+      "id": "potential",
+      "label": "原子间势",
+      "tasks": [
+        "Physics_000",
+        "Chemistry_003",
+        "Material_002"
+      ]
+    },
+    {
+      "id": "biostructure",
+      "label": "生物分子结构",
+      "tasks": [
+        "Chemistry_001",
+        "Chemistry_002",
+        "Life_002",
+        "Life_000"
+      ]
+    },
+    {
+      "id": "omics",
+      "label": "测序与单细胞",
+      "tasks": [
+        "Life_001",
+        "Life_003",
+        "Neuroscience_003"
+      ]
+    },
+    {
+      "id": "inference",
+      "label": "统计推断与张力",
+      "tasks": [
+        "Astronomy_000",
+        "Astronomy_001",
+        "Astronomy_002",
+        "Earth_000"
+      ]
+    },
+    {
+      "id": "gravity",
+      "label": "黑洞与引力",
+      "tasks": [
+        "Astronomy_000",
+        "Astronomy_003"
+      ]
+    },
+    {
+      "id": "quantum",
+      "label": "量子物质",
+      "tasks": [
+        "Physics_001",
+        "Physics_003",
+        "Physics_002",
+        "Information_002"
+      ]
+    },
+    {
+      "id": "climate",
+      "label": "天气与气候",
+      "tasks": [
+        "Earth_003",
+        "Earth_002",
+        "Earth_001",
+        "Energy_003"
+      ]
+    },
+    {
+      "id": "optimize",
+      "label": "优化与规划",
+      "tasks": [
+        "Energy_001",
+        "Energy_002",
+        "Math_001",
+        "Math_002"
+      ]
+    },
+    {
+      "id": "vision",
+      "label": "视觉与多模态",
+      "tasks": [
+        "Information_000",
+        "Information_001",
+        "Math_000",
+        "Material_001",
+        "Neuroscience_002"
+      ]
+    },
+    {
+      "id": "connectome",
+      "label": "连接组",
+      "tasks": [
+        "Neuroscience_001",
+        "Neuroscience_002"
+      ]
+    },
+    {
+      "id": "calibrate",
+      "label": "参数辨识",
+      "tasks": [
+        "Energy_000",
+        "Neuroscience_001",
+        "Material_003"
+      ]
+    },
+    {
+      "id": "reasoning",
+      "label": "符号推理",
+      "tasks": [
+        "Math_003",
+        "Information_002"
+      ]
+    },
+    {
+      "id": "reproduce",
+      "label": "公开数据复现",
+      "tasks": [
+        "Earth_001",
+        "Neuroscience_000",
+        "Energy_003"
+      ]
+    }
+  ]
+}
