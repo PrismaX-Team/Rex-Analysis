@@ -531,23 +531,100 @@
   .go-ghost:hover { border-color: var(--accent); color: var(--accent); }
 }
 
-// AFE entry page: same shell as RCB, a domain panel instead of the star map.
-
-
-.afe-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 640px;
-  justify-self: end;
-  width: 100%;
+// AFE entry page: one wide column — hero, design philosophy, domains, committee.
+.afe-main {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 56px 0 72px;
 }
 
+.afe-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 0 8px;
+  max-width: 860px;
+
+  .wordmark { margin: 20px 0 18px; }
+  .rcb-stats { margin-top: 30px; }
+}
+.afe-tagline {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.afe-lede {
+  margin: 0 0 4px;
+  max-width: 720px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.afe-sec { margin-top: 88px; scroll-margin-top: 92px; }
+.afe-sec-head {
+  margin-bottom: 26px;
+  h2 {
+    margin: 8px 0 0;
+    font-family: var(--display);
+    font-size: clamp(24px, 2.4vw, 32px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+.afe-sec-lede {
+  margin: 12px 0 0;
+  max-width: 760px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+// Design philosophy: seven numbered principles, two per row on wide screens.
+.afe-phil {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+
+  li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-areas: "n name" "n text";
+    gap: 2px 16px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  li:first-child, li:nth-child(2) { border-top-color: var(--line-strong); }
+  .afe-phil-n {
+    grid-area: n;
+    font-family: var(--code);
+    font-size: 13px;
+    color: var(--accent-ink);
+    padding-top: 3px;
+  }
+  b { grid-area: name; font-family: var(--display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  p { grid-area: text; margin: 4px 0 0; font-size: 14px; line-height: 1.75; color: var(--muted); }
+}
+
+// Domains: one card per domain, same accent colour as its tasks.
+.afe-domains {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
 .afe-domain {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 20px 22px;
+  padding: 22px 24px;
   border-radius: 16px;
   border: 1px solid var(--line);
   border-left: 4px solid var(--c);
@@ -561,13 +638,12 @@
   &:hover .afe-go { color: var(--c); }
 
   header { display: flex; justify-content: space-between; align-items: baseline; }
-  h2 { margin: 0; font-family: var(--display); font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
-  p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--muted); }
-  footer { display: flex; justify-content: space-between; margin-top: 4px; font-family: var(--code); font-size: 12px; color: var(--muted); }
+  h3 { margin: 0; font-family: var(--display); font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  footer { display: flex; justify-content: flex-end; margin-top: auto; padding-top: 6px; }
 }
 .afe-en { font-family: var(--code); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c); }
 .afe-count { font-family: var(--display); font-size: 28px; font-weight: 600; line-height: 1; color: var(--ink); small { font-size: 13px; font-weight: 400; color: var(--muted); } }
-.afe-go { color: var(--ink); transition: color 160ms ease; }
+.afe-go { font-size: 13.5px; color: var(--ink); transition: color 160ms ease; }
 
 .afe-samples {
   list-style: none;
@@ -580,15 +656,107 @@
     padding: 3px 10px;
     border-radius: 999px;
     font-size: 12.5px;
+    line-height: 1.5;
     color: var(--body-ink);
     background: color-mix(in srgb, var(--c) 9%, transparent);
   }
 }
 
-
-
-@media (max-width: 1000px) {
-  .afe-panel { justify-self: stretch; max-width: none; }
+// Committee: the member list lives on the home page; this only points there.
+.afe-committee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 72px;
+  padding: 22px 26px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--muted); max-width: 720px; }
+  a { font-size: 14.5px; color: var(--accent-ink); text-decoration: none; white-space: nowrap; }
+  a:hover { text-decoration: underline; }
 }
 
-.hero-lede.afe-head { margin-bottom: 10px; font-size: 18px; font-weight: 600; color: var(--ink); }
+@media (max-width: 900px) {
+  .afe-main { width: calc(100% - 32px); padding: 32px 0 48px; }
+  .afe-phil { grid-template-columns: 1fr; gap: 0; }
+  .afe-phil li:nth-child(2) { border-top-color: var(--line); }
+  .afe-sec { margin-top: 64px; }
+}
+
+// Task instance: a taste of one task; the full statement is on its own page.
+.afe-inst-en {
+  margin: 6px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.afe-inst {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 24px;
+  padding: 26px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--c);
+  background: var(--paper);
+  backdrop-filter: blur(12px);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--c) 70%, transparent); }
+  &:hover .afe-inst-go { color: var(--c); }
+}
+.afe-inst-tag {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: var(--code);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+}
+.afe-inst-body { min-width: 0; }
+.afe-inst-q {
+  margin: 0 0 14px;
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--body-ink);
+}
+.afe-inst-data {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  li {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    font-family: var(--code);
+    font-size: 12px;
+    color: var(--body-ink);
+  }
+  small { font-size: 11px; color: var(--muted); }
+}
+.afe-inst-go {
+  align-self: center;
+  font-size: 14px;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+@media (max-width: 900px) {
+  .afe-inst { grid-template-columns: 1fr; gap: 14px; }
+  .afe-inst-go { justify-self: start; }
+}
