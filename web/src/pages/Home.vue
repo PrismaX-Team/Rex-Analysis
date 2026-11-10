@@ -123,12 +123,6 @@
             <h3 class="bench-name">{{ bench.name }}</h3>
             <p class="bench-tagline">{{ bench.tagline }}</p>
             <p class="bench-summary">{{ bench.summary }}</p>
-            <dl class="bench-stats">
-              <div v-for="s in statsOf(bench)" :key="s.label">
-                <dt>{{ s.label }}</dt>
-                <dd>{{ s.value }}</dd>
-              </div>
-            </dl>
             <footer class="bench-foot">
               <span class="bench-chip">{{ bench.task_type }}</span>
               <span class="bench-chip ghost">{{ bench.scoring }}</span>
@@ -288,24 +282,6 @@ const slots = getBenchSlots();
 const live = benches.filter((b) => b.status === "live");
 // The hero pill names the most recently added live bench.
 const newest = [...live].sort((x, y) => (x.launched || "").localeCompare(y.launched || "")).at(-1);
-
-// Static stats from benches.json, plus live ones read off the leaderboard so they never go stale.
-function statsOf(bench) {
-  const version = bench.version || "1.0";
-  const board = getLeaderboard(bench.id, version);
-  const pack = getTasks(bench.id, version);
-  const disciplines = new Set(pack.tasks.map((t) => t.domain)).size;
-  const first = board.groups?.[0];
-  const rows = board.rows.filter((r) => !first || r.group === first.id);
-  const top = rows.length ? Math.max(...rows.map((r) => r.score)).toFixed(2) : "–";
-  return [
-    { label: "任务", value: String(pack.tasks.length) },
-    { label: "领域", value: String(disciplines) },
-    { label: "提交", value: String(board.rows.length) },
-    { label: first ? `${first.label}最高分` : "最高分", value: top },
-  ];
-}
-
 
 const how = [
   { n: "01", title: "选一个 bench", text: "每个 bench 测一种科研能力。先读它的说明页：任务长什么样、怎么评分。", to: "/about", go: "读评测说明 →" },

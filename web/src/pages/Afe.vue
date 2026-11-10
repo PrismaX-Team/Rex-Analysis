@@ -56,23 +56,6 @@
         </ul>
       </section>
 
-      <section id="package" class="afe-sec">
-        <header class="afe-sec-head">
-          <p class="eyebrow">任务包</p>
-          <h2>每个任务都是一份五部分任务包</h2>
-          <p class="afe-sec-lede">
-            Instruction、Input、Environment、Verifier 与 Meta。Validation 在研究阶段按任务设定的预算向 Agent 提供反馈；
-            Test 只对冻结后的提交离线、确定性地评分一次。最优可达结果事先未知。
-          </p>
-        </header>
-        <ul class="afe-package">
-          <li v-for="p in packageParts" :key="p.name">
-            <code>{{ p.name }}</code>
-            <span>{{ p.text }}</span>
-          </li>
-        </ul>
-      </section>
-
       <section class="afe-sec afe-committee">
         <p>由身处科学前沿的专家共同支持，顾问委员会参与任务遴选、科学审核与评测可信度。</p>
         <router-link to="/#team">看委员会成员 →</router-link>
@@ -114,12 +97,4 @@ const traits = [
   { name: "长期可持续性", text: "数据、软件和验证路径能够稳定获得，不依赖脆弱服务、秘密凭证或不可重复的外部行为。" },
 ];
 
-const packageParts = [
-  { name: "instruction.json", text: "面向 Agent 的任务说明、输入声明、提交产物、已提供环境、额外要求与运行上限。" },
-  { name: "input/", text: "只包含 Agent 可见的科学输入与提交模板。" },
-  { name: "environment/", text: "environment.json 选择运营方默认镜像或任务专用 Containerfile。" },
-  { name: "verifier/validation/", text: "Agent 在研究过程中可请求的反馈；可没有。" },
-  { name: "verifier/test/", text: "提交冻结后的一次最终评分；离线、确定性。" },
-  { name: "meta.json", text: "任务身份、数据来源、指标语义与公开分数映射。" },
-];
 </script>

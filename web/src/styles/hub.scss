@@ -457,18 +457,6 @@ li:first-child .hb-rank {
 .bench-tagline { margin: 0; font-size: 15px; font-weight: 600; color: var(--c); }
 .bench-summary { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.65; }
 
-.bench-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px 14px;
-  margin: 4px 0 0;
-  padding: 12px 0 0;
-  border-top: 1px solid var(--line);
-
-  div { display: flex; flex-direction: column; gap: 2px; }
-  dt { font-family: var(--code); font-size: 11px; letter-spacing: 0.08em; color: var(--muted); }
-  dd { margin: 0; font-family: var(--display); font-size: 23px; font-weight: 600; letter-spacing: -0.02em; }
-}
 
 .bench-foot {
   margin-top: auto;
