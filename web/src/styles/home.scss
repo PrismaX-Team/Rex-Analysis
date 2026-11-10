@@ -662,22 +662,10 @@
   }
 }
 
-// Committee: the member list lives on the home page; this only points there.
-.afe-committee {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 72px;
-  padding: 22px 26px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--muted); max-width: 720px; }
-  a { font-size: 14.5px; color: var(--accent-ink); text-decoration: none; white-space: nowrap; }
-  a:hover { text-decoration: underline; }
-}
+// Team: the shared Committee component, full width on the AFE page.
+.afe-team { margin-top: 88px; }
+.afe-team .cm { margin-top: 8px; }
+.afe-team .cm-head { margin-bottom: 20px; }
 
 @media (max-width: 900px) {
   .afe-main { width: calc(100% - 32px); padding: 32px 0 48px; }

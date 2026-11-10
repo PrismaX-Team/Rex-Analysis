@@ -214,14 +214,6 @@
         <FieldCoverage />
       </section>
 
-      <section id="team" class="hub-section">
-        <header class="section-head">
-          <h2>团队</h2>
-          <p>由身处科学前沿的专家共同支持。</p>
-        </header>
-        <Committee />
-      </section>
-
       <section id="how" class="hub-section">
         <header class="section-head">
           <h2>如何参与</h2>
@@ -257,7 +249,6 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import ThemeToggle from "../components/ThemeToggle.vue";
 import OverallBoard from "../components/OverallBoard.vue";
 import FieldCoverage from "../components/FieldCoverage.vue";
-import Committee from "../components/Committee.vue";
 import { useTheme } from "../theme/useTheme";
 import { getBenches, getBenchSlots, getCarouselSize, getLeaderboard, getTasks } from "../data/client";
 

@@ -56,9 +56,12 @@
         </ul>
       </section>
 
-      <section class="afe-sec afe-committee">
-        <p>由身处科学前沿的专家共同支持，顾问委员会参与任务遴选、科学审核与评测可信度。</p>
-        <router-link to="/#team">看委员会成员 →</router-link>
+      <section id="team" class="afe-sec afe-team">
+        <header class="afe-sec-head">
+          <p class="eyebrow">团队</p>
+          <h2>由身处科学前沿的专家共同支持</h2>
+        </header>
+        <Committee />
       </section>
     </main>
 
@@ -71,6 +74,7 @@
 
 <script setup>
 import ThemeToggle from "../components/ThemeToggle.vue";
+import Committee from "../components/Committee.vue";
 import { REX_URL } from "../data/links";
 import { getBench } from "../data/client";
 

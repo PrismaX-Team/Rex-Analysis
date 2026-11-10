@@ -1,5 +1,5 @@
 {
-  "note": "首页团队区。成员为空的组不显示。顾问委员会抄自 AFE 任务站，照片在 web/public/committee/。",
+  "note": "AFE 页面的团队区。成员为空的组不显示。顾问委员会抄自 AFE 任务站，照片在 web/public/committee/。",
   "source": "https://prismax-team.github.io/AgentFrontierExam-Tasks/zh/",
   "fetched": "2026-11-05",
   "groups": [

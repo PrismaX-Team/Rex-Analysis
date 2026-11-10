@@ -57,7 +57,7 @@ cd web && BASE=/Rex-Analysis/ npm run build:pages
 | `afe/versions.json` | 手写，AFE 版本清单 |
 | `afe/1.0/about.md` | 手写，说明页正文 |
 | `fields.json` | `tools/build_fields.py` 生成：任务数只统计 RCB 公开任务，领域和二级领域名取自 AFE 版本管理表 |
-| `committee.json` | 手写，首页团队区；照片放 `web/public/committee/` |
+| `committee.json` | 手写，AFE 页面的团队区；照片放 `web/public/committee/` |
 
 重新生成榜单：
 
