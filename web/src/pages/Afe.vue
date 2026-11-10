@@ -23,14 +23,8 @@
         <p class="afe-tagline">{{ bench.tagline }}</p>
         <p class="afe-lede">{{ bench.summary }}</p>
 
-        <dl class="rcb-stats">
-          <div><dt>任务</dt><dd>{{ pack.tasks.length }}</dd></div>
-          <div><dt>领域</dt><dd>{{ pack.domains.length }}</dd></div>
-          <div><dt>设计原则</dt><dd>{{ philosophy.length }}</dd></div>
-        </dl>
         <div class="rcb-go">
-          <router-link class="go-solid" :to="`${base}/tasks`">浏览任务 →</router-link>
-          <router-link class="go-ghost" :to="`${base}/about`">评测说明</router-link>
+          <router-link class="go-solid" :to="`${base}/about`">评测说明</router-link>
           <a class="go-ghost" :href="REX_URL" target="_blank" rel="noreferrer">参与共建 ↗</a>
         </div>
       </section>
@@ -49,49 +43,34 @@
         </ol>
       </section>
 
-      <section id="domains" class="afe-sec">
+      <section id="traits" class="afe-sec">
         <header class="afe-sec-head">
-          <p class="eyebrow">领域</p>
-          <h2>每个领域单独出题、单独验证</h2>
-          <p class="afe-sec-lede">题目来自真实、尚未解决的科学问题。智能体看到题面和数据，自己选方法、做计算，交出报告、代码和结果。</p>
+          <p class="eyebrow">任务特性</p>
+          <h2>一道题要满足四个条件</h2>
         </header>
-        <div class="afe-domains">
-          <router-link
-            v-for="d in domains"
-            :key="d.id"
-            class="afe-domain"
-            :style="{ '--c': d.hue }"
-            :to="{ path: `${base}/tasks`, query: { domain: d.id } }"
-          >
-            <header>
-              <span class="afe-en">{{ d.en }}</span>
-              <span class="afe-count">{{ d.count }}<small> 题</small></span>
-            </header>
-            <h3>{{ d.label }}</h3>
-            <ul class="afe-samples">
-              <li v-for="t in d.samples" :key="t.task_id">{{ t.label }}</li>
-            </ul>
-            <footer><span class="afe-go">看这 {{ d.count }} 题 →</span></footer>
-          </router-link>
-        </div>
+        <ul class="afe-traits">
+          <li v-for="t in traits" :key="t.name">
+            <b>{{ t.name }}</b>
+            <p>{{ t.text }}</p>
+          </li>
+        </ul>
       </section>
 
-      <section v-if="featured" id="example" class="afe-sec">
+      <section id="package" class="afe-sec">
         <header class="afe-sec-head">
-          <p class="eyebrow">任务实例</p>
-          <h2>{{ featured.label }}</h2>
-          <p class="afe-inst-en">{{ featured.title }}</p>
+          <p class="eyebrow">任务包</p>
+          <h2>每个任务都是一份五部分任务包</h2>
+          <p class="afe-sec-lede">
+            Instruction、Input、Environment、Verifier 与 Meta。Validation 在研究阶段按任务设定的预算向 Agent 提供反馈；
+            Test 只对冻结后的提交离线、确定性地评分一次。最优可达结果事先未知。
+          </p>
         </header>
-        <router-link class="afe-inst" :style="{ '--c': domainHue(featured.domain) }" :to="`${base}/tasks/${featured.task_id}`">
-          <span class="afe-inst-tag">{{ featured.domain_label }}</span>
-          <div class="afe-inst-body">
-            <p class="afe-inst-q">{{ featured.summary }}</p>
-            <ul class="afe-inst-data">
-              <li v-for="f in featured.data" :key="f.path">{{ f.name }}<small>{{ f.size }}</small></li>
-            </ul>
-          </div>
-          <span class="afe-inst-go">查看完整题面 →</span>
-        </router-link>
+        <ul class="afe-package">
+          <li v-for="p in packageParts" :key="p.name">
+            <code>{{ p.name }}</code>
+            <span>{{ p.text }}</span>
+          </li>
+        </ul>
       </section>
 
       <section class="afe-sec afe-committee">
@@ -102,25 +81,21 @@
 
     <footer class="home-foot">
       <span>在未解决的科学问题上持续突破。</span>
-      <span>{{ pack.tasks.length }} 题 · {{ pack.domains.length }} 个领域</span>
+      <span>{{ bench.name }}</span>
     </footer>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
 import ThemeToggle from "../components/ThemeToggle.vue";
-import { useTheme } from "../theme/useTheme";
 import { REX_URL } from "../data/links";
-import { getBench, getFeatured, getTasks } from "../data/client";
+import { getBench } from "../data/client";
 
 const bench = getBench("afe");
 const version = bench.version || "1.0";
 const base = `/afe/${version}`;
-const pack = getTasks("afe", version);
-const { theme } = useTheme();
 
-// From the AFE task site (设计哲学). Verbatim, only the numbering is local.
+// From the AFE task site (设计哲学), verbatim. Only the numbering is local.
 const philosophy = [
   { n: "01", name: "Live Question", text: "评测的不是解决办法明确的静态题目，而是仍未解决、并值得不断推进的真实前沿问题。" },
   { n: "02", name: "Live Environment", text: "在开放环境下，模型可以检索调研问题的前沿方法，公开前沿是研究的起点，而不是需要隔离的信息。" },
@@ -131,26 +106,20 @@ const philosophy = [
   { n: "07", name: "受控评测", text: "资源和网络边界预先固定，研究过程被完整记录与审计，防止 hacking、访问隐藏输入或通过绕过约束获得虚假高分。" },
 ];
 
-const domainHue = (id) => {
-  const d = pack.domains.find((x) => x.id === id);
-  return d ? (theme.value === "dark" ? d.color_dark || d.color : d.color) : "var(--accent)";
-};
+// Also from the task site (任务特性).
+const traits = [
+  { name: "科学重要性", text: "结果变好后，应能推进真实研究问题或重要科学计算瓶颈。" },
+  { name: "Verifier 可信度", text: "评分算法、输入、常数、容差、聚合和无效输出处理能够完整固定，并在本地、离线、确定性运行。" },
+  { name: "前沿空间", text: "当前最佳可达结果仍未知，并有可信证据表明存在实质改进空间。" },
+  { name: "长期可持续性", text: "数据、软件和验证路径能够稳定获得，不依赖脆弱服务、秘密凭证或不可重复的外部行为。" },
+];
 
-// One task on show. The full statement lives on its own page; this is a taste of it.
-const featured = computed(() => {
-  const ids = getFeatured("afe");
-  const pick = ids.map((id) => pack.tasks.find((t) => t.task_id === id)).find(Boolean) || pack.tasks[0];
-  return pick || null;
-});
-
-const domains = computed(() =>
-  pack.domains.map((d) => {
-    const tasks = pack.tasks.filter((t) => t.domain === d.id);
-    return {
-      ...d,
-      hue: theme.value === "dark" ? d.color_dark || d.color : d.color,
-      samples: tasks.slice(0, 3),
-    };
-  }),
-);
+const packageParts = [
+  { name: "instruction.json", text: "面向 Agent 的任务说明、输入声明、提交产物、已提供环境、额外要求与运行上限。" },
+  { name: "input/", text: "只包含 Agent 可见的科学输入与提交模板。" },
+  { name: "environment/", text: "environment.json 选择运营方默认镜像或任务专用 Containerfile。" },
+  { name: "verifier/validation/", text: "Agent 在研究过程中可请求的反馈；可没有。" },
+  { name: "verifier/test/", text: "提交冻结后的一次最终评分；离线、确定性。" },
+  { name: "meta.json", text: "任务身份、数据来源、指标语义与公开分数映射。" },
+];
 </script>

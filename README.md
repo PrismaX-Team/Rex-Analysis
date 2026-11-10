@@ -55,9 +55,8 @@ cd web && BASE=/Rex-Analysis/ npm run build:pages
 | `rcb/1.0/about.md` | 手写，说明页正文 |
 | `rcb/1.0/atlas.json` | 手写，星图的学科、中文短名和方法线 |
 | `afe/versions.json` | 手写，AFE 版本清单 |
-| `afe/1.0/tasks.json` | `tools/build_afe.py` 从 AFE 工作区的任务包公开侧生成（工作区不在本仓库里） |
 | `afe/1.0/about.md` | 手写，说明页正文 |
-| `fields.json` | `tools/build_fields.py` 生成，统计所有数据集：RCB 来自公开任务，AFE 来自版本管理表（只取领域名、二级领域名和方向数） |
+| `fields.json` | `tools/build_fields.py` 生成：任务数只统计 RCB 公开任务，领域和二级领域名取自 AFE 版本管理表 |
 | `committee.json` | 手写，首页团队区；照片放 `web/public/committee/` |
 
 重新生成榜单：
@@ -71,10 +70,9 @@ python3 tools/build_content.py
 重新生成 AFE 任务和领域版图（AFE 先跑，领域版图要读它）：
 
 ```bash
-python3 tools/build_afe.py <AFE 工作区路径>                   # 或设环境变量 AFE_WORKSPACE
 python3 tools/build_fields.py ../_AgentFrontierExam版本管理.xlsx
 ```
 
-`build_afe.py` 只读每个任务包的 `task.toml`、`instruction.md`、`environment/data/` 的文件名和大小、`environment/task_info.json`，不读 `tests/`、`solution/`、`authoring/`、评分结果和 `target_study/`。输出里出现评分材料的字样就整体失败。新任务没有中文短名时也失败，要先在脚本的 `LABELS` 里补上。
+AFE 的题目内容不公开：仓库里没有 AFE 任务数据，也没有生成它们的脚本。AFE 在站上只是展示页（设计、任务特性、任务包结构、委员会）。
 
 不要把 `target_study/` 或任何评分材料放进 `content/`。

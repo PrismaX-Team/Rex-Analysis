@@ -3,8 +3,8 @@
 
 Datasets counted now:
 - RCB: live tasks, read from content/rcb/1.0/tasks.json and content/rcb/1.0/atlas.json.
-- AFE: live tasks from content/afe/1.0/tasks.json (run tools/build_afe.py first), plus the
-  directions still planned in the version sheet. A direction that already went live is not counted twice.
+- AFE: only the domain taxonomy from the version sheet (domain names and sub-field names). AFE task
+  content is not public, so no task titles or counts are exported.
 
 The sheet also holds owners, partners, funding sources, progress and in-house 2.0 plans. Those stay
 out: only domain names, sub-field names and the number of planned task directions are written.
@@ -29,11 +29,7 @@ HEADER_ROW = 4
 
 DATASETS = [
     {"id": "rcb", "name": "ResearchClaw Bench", "short": "RCB", "status": "live", "legend": "RCB 已上线"},
-    {"id": "afe", "name": "AgentFrontierExam 1.0", "short": "AFE", "status": "live", "legend": "AFE 已上线"},
-    {"id": "afe_plan", "name": "AgentFrontierExam 规划", "short": "AFE 规划", "status": "planned", "legend": "AFE 规划中"},
 ]
-# Sheet directions whose tasks are already in AFE 1.0.
-AFE_LIVE_DIRECTIONS = {"反应机理", "大气、海洋、地质、极地"}
 # RCB domain id -> the domain name used by the version sheet.
 RCB_DOMAINS = {
     "Astronomy": "天文", "Chemistry": "化学", "Earth": "地球", "Energy": "能源", "Information": "信息",
@@ -74,14 +70,11 @@ def main() -> None:
     for n in sorted(k for k in rows if k > HEADER_ROW):
         cells = rows[n]
         if cells.get("A"):
-            domains.append({"name": clean_domain(cells["A"]), "subfields": [], "topics": [], "counts": {"rcb": 0, "afe": 0, "afe_plan": 0}})
+            domains.append({"name": clean_domain(cells["A"]), "subfields": [], "topics": [], "counts": {"rcb": 0}})
         if not domains:
             continue
         if cells.get("B"):
             domains[-1]["subfields"].append(cells["B"])
-        # "-" marks a sub-field with no planned direction yet; a merged sub-field cell can carry several.
-        if cells.get("C") and cells["C"] != "-" and cells["C"] not in AFE_LIVE_DIRECTIONS:
-            domains[-1]["counts"]["afe_plan"] += 1
 
     by_name = {d["name"]: d for d in domains}
     labels = json.loads((CONTENT / "rcb" / "1.0" / "atlas.json").read_text())["labels"]
@@ -92,23 +85,15 @@ def main() -> None:
         target["counts"]["rcb"] += 1
         target["topics"].append(labels.get(task["task_id"], task["task_id"]))
 
-    afe = json.loads((CONTENT / "afe" / "1.0" / "tasks.json").read_text())
-    afe_field = {d["id"]: d["field"] for d in afe["domains"]}
-    for task in afe["tasks"]:
-        target = by_name.get(afe_field.get(task["domain"], ""))
-        if target is None:
-            sys.exit(f"AFE domain {task['domain']} has no match in the sheet; update DOMAINS in build_afe.py")
-        target["counts"]["afe"] += 1
-        target["topics"].append(task["label"])
-
     for d in domains:
         d["total"] = sum(d["counts"].values())
+        # The sheet defines the taxonomy; domains without a public task keep their sub-field list.
 
     doc = {
-        "note": "由 tools/build_fields.py 生成。已上线部分来自公开任务；规划部分来自版本管理表，只含领域名、二级领域名和方向数。",
+        "note": "由 tools/build_fields.py 生成。任务数来自 RCB 公开任务；领域和二级领域名来自 AFE 版本管理表，不含任何 AFE 题目。",
         "updated": "2026-11",
         "datasets": [{**ds, "total": sum(d["counts"][ds["id"]] for d in domains)} for ds in DATASETS],
-        "domains": sorted(domains, key=lambda d: -d["total"]),
+        "domains": sorted(domains, key=lambda d: -d["total"]),  # stable: ties keep sheet order
     }
     OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n")
     print(f"{len(domains)} domains, {sum(len(d['subfields']) for d in domains)} sub-fields", {ds["short"]: ds["total"] for ds in doc["datasets"]})

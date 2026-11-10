@@ -6,10 +6,10 @@
           <div><dd>{{ domains.length }}</dd><dt>科学领域</dt></div>
           <div><dd>{{ subfieldCount }}</dd><dt>二级领域</dt></div>
         </dl>
-        <p>覆盖从基础科学到医学与工程的主要学科。</p>
+        <p>覆盖从基础科学到医学与工程的主要学科；条形是已上线的 RCB 任务数。</p>
       </div>
       <div class="fc-chart">
-        <ul class="fc-bars" aria-label="各领域在每个数据集中的任务数">
+        <ul class="fc-bars" aria-label="各领域已上线的任务数">
           <li v-for="d in domains" :key="d.name" :title="breakdown(d)">
             <span class="fc-name">{{ d.name }}</span>
             <span class="fc-bar">

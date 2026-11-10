@@ -13,7 +13,7 @@ Rex-Analysis 是面向研究型智能体的评测基准合集。一个站上挂�
 | bench | 状态 | 内容 |
 |---|---|---|
 | ResearchClaw Bench（RCB） | live | 40 题、10 个学科、单版本 1.0，RADS 0–100 |
-| AgentFrontierExam 1.0（AFE1.0） | live，暂无公开成绩 | 20 题、2 个领域（计算化学、地球科学） |
+| AgentFrontierExam 1.0（AFE1.0） | live，展示页 | 只展示设计哲学、任务特性、任务包结构和委员会入口；题目内容不公开 |
 
 首页为后续 bench 预留了空位。新 bench 上线的步骤见第 11 节。
 
@@ -165,7 +165,6 @@ content/
   afe/
     versions.json         手写：AFE 版本清单
     1.0/
-      tasks.json          tools/build_afe.py 生成：任务公开侧、领域、中文短名
       about.md            手写：说明页正文
 ```
 
@@ -419,14 +418,13 @@ web/
 ```text
 tools/
   build_content.py        RCB 榜
-  build_afe.py            AFE 任务
   build_fields.py         领域版图（读上面两者的产物和版本管理表）
 sources/
   content.lock.json       按 bench 登记输入：rcb.1.0.*、afe.1.0.tasks
   1.0/rcb-home-leaderboard.json
 ```
 
-`build_afe.py`：从 AFE 工作区（命令行参数或 `AFE_WORKSPACE` 给出，不在本仓库里）的 `manifests/tasks.jsonl` 逐题读公开侧——`task.toml` 的元数据、`instruction.md` 题面、`environment/data/` 的文件名和大小、`environment/task_info.json` 的数据说明。去掉运行时细节（容器路径、Gaussian/MCP 说明、canary 注释、时间预算句）；运行时长和算力不上站，写进 `content/afe/1.0/tasks.json`。不读 `tests/`、`solution/`、`authoring/`、评分结果、`target_study/`。输出里出现 `target_study`、`rubric`、`judge_code` 等字样，或者有题缺中文短名，整体失败。
+AFE 的题目内容不公开：仓库里没有生成 AFE 任务的脚本，也没有 `tasks.json`。站上的 AFE 只是展示页。
 
 `sources/content.lock.json` 登记每一份输入的路径、来源 URL 和抓取日期。脚本只从登记过的路径读。
 
@@ -453,11 +451,11 @@ python3 tools/build_content.py   # 重新生成 content/rcb/1.0/
 
 脚本失败时不要用上一版生成物冒充这一次成功；先把失败原因修掉。
 
-`tools/build_fields.py <版本管理表.xlsx>` 负责 `content/fields.json`，统计三段：RCB 已上线（`content/rcb/1.0/`）、AFE 已上线（`content/afe/1.0/tasks.json`）、AFE 规划中（表里的任务方向）。表里已经上线的方向（反应机理；大气、海洋、地质、极地）不再算进规划，避免重复。任何一题的领域对不上表里的领域时整体失败。加数据集时改脚本里的 `DATASETS`，页面不用动。表里还有负责人、合作方、项目来源、进度和 2.0 内部计划，这些一律不导出，只写领域名、二级领域名和任务方向数。表本身不进仓库。
+`tools/build_fields.py <版本管理表.xlsx>` 负责 `content/fields.json`。任务数只统计 RCB 公开任务（`content/rcb/1.0/`）；一级和二级领域名取自 AFE 版本管理表，不含任何 AFE 题目。表里还有负责人、合作方、项目来源、进度和 2.0 内部计划，这些一律不导出。RCB 的学科对不上表里的领域时整体失败。表本身不进仓库。
 
 ## 9. 和任务包的对应
 
-AFE 用 Harbor 任务包（`task.toml`、`instruction.md`、`environment/`、`tests/`、`solution/`、`authoring/`），网站只取前三项的公开部分，见第 8 节。
+AFE 用 Harbor 任务包（`task.toml`、`instruction.md`、`environment/`、`tests/`、`solution/`、`authoring/`）。这些内容都不公开：站上只有 AFE 的展示页，仓库里不存任务数据和生成脚本。
 
 RCB 网站不发明第三套任务格式。任务包仍是：
 

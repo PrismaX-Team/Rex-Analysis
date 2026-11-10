@@ -31,16 +31,15 @@
       "summary": "Agent Frontier Exam 评测研究 Agent 能否面向真实、尚未解决的前沿科学问题，在开放的环境中自主调研，提出并验证改进方案，取得可衡量的进展，推进问题的边界。",
       "status": "live",
       "entry": "/afe",
-      "version": "1.0",
       "task_type": "五部分任务包",
       "scoring": "确定性验证",
       "category": "科研智能体",
       "accent": "#0e8a6f",
       "accent_dark": "#2fc79f",
       "github": "https://github.com/PrismaX-Team/AgentFrontierExam-Tasks",
-      "tasks_lede": "浏览 Agent Frontier Exam 中的科学问题、任务合同与评测环境。",
+      "tasks_lede": "任务正在准备中。",
       "board_lede": "每个结果都相对于其他 Agent 和当前前沿进行衡量。",
-      "board_empty": "暂无公开成绩。可以先浏览任务。",
+      "board_empty": "暂无公开成绩。",
       "private_note": "Verifier 在运行前冻结，并在离线环境中评分。",
       "launched": "2026-11"
     }

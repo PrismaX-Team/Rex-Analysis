@@ -12,9 +12,7 @@ import rcbAtlas10 from "@content/rcb/1.0/atlas.json";
 import rcbPass510 from "@content/rcb/1.0/pass5.json";
 
 import afeVersions from "@content/afe/versions.json";
-import afeTasks10 from "@content/afe/1.0/tasks.json";
 import afeAbout10 from "@content/afe/1.0/about.md?raw";
-import afeFeatured from "@content/afe/featured.json";
 
 // Generated run files, keyed by bench then version then run_id.
 const runFiles = import.meta.glob("@content/*/*/runs/*.json", { eager: true, import: "default" });
@@ -39,9 +37,7 @@ const books = {
   },
   afe: {
     versions: afeVersions.versions,
-    featured: afeFeatured,
     "1.0": {
-      tasks: afeTasks10,
       about: afeAbout10,
       runs: {},
     },
@@ -104,10 +100,6 @@ export function getPass5(bench, version) {
   return book(bench, version)?.pass5 || null;
 }
 
-// Task ids a bench wants to show as examples on its entry page, in order.
-export function getFeatured(bench) {
-  return books[bench]?.featured?.task_ids || [];
-}
 
 export function getAtlas(bench, version) {
   return book(bench, version)?.atlas || null;
