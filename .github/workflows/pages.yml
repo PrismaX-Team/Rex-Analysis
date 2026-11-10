@@ -30,6 +30,9 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
       - run: npm ci
+      # Reads the Pages config (source, base path, custom domain). Deploy fails without it.
+      - id: pages
+        uses: actions/configure-pages@v5
       # Project site: https://<owner>.github.io/<repo>/ . For a custom domain or a <owner>.github.io
       # repository, set BASE to "/".
       - run: npm run build:pages
