@@ -38,4 +38,4 @@ Agent Frontier Exam 评测研究 Agent 能否面向真实、尚未解决的前�
 
 帮助我们找到重要的前沿科学问题，并将其转化为可评测的 AFE 任务包。
 
-提交方式和审核流程见 [任务共建](https://prismax-team.github.io/AgentFrontierExam-Tasks/zh/contribute/)。
+把问题提交给书生·端砚，由它调用模型和智能体攻关：见 [提交科学问题](https://discovery-home.intern-ai.org.cn/home/event/rex/index.html)。

@@ -31,7 +31,7 @@
       "summary": "Agent Frontier Exam 评测研究 Agent 能否面向真实、尚未解决的前沿科学问题，在开放的环境中自主调研，提出并验证改进方案，取得可衡量的进展，推进问题的边界。",
       "status": "live",
       "entry": "/afe",
-      "task_type": "五部分任务包",
+      "task_type": "任务包 · 前沿问题",
       "scoring": "确定性验证",
       "category": "科研智能体",
       "accent": "#0e8a6f",
