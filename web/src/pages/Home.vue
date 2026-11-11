@@ -240,13 +240,13 @@
     <footer class="hub-foot">
       <div class="foot-left">
         <nav class="foot-nav" aria-label="页脚导航">
-          <router-link to="/">{{ en.value ? "Home" : "首页" }}</router-link>
+          <router-link to="/">{{ en ? "Home" : "首页" }}</router-link>
           <router-link to="/leaderboard">{{ t("排行榜") }}</router-link>
           <router-link to="/about">{{ t("评测说明") }}</router-link>
-          <a :href="REX_URL" target="_blank" rel="noreferrer">{{ en.value ? "Contribute" : "参与共建" }}</a>
+          <a :href="REX_URL" target="_blank" rel="noreferrer">{{ en ? "Contribute" : "参与共建" }}</a>
         </nav>
-        <p class="foot-led">{{ en.value ? "Led by " : "由 " }}<a href="https://www.shlab.org.cn/" target="_blank" rel="noreferrer">{{ en.value ? "Shanghai Artificial Intelligence Laboratory" : "上海人工智能实验室" }}</a>{{ en.value ? "." : "主导。" }}</p>
-        <p class="foot-contact">{{ en.value ? "Contact: " : "联系：" }}<a href="mailto:xiaojuncheng@pjlab.org.cn">xiaojuncheng@pjlab.org.cn</a></p>
+        <p class="foot-led">{{ en ? "Led by " : "由 " }}<a href="https://www.shlab.org.cn/" target="_blank" rel="noreferrer">{{ en ? "Shanghai Artificial Intelligence Laboratory" : "上海人工智能实验室" }}</a>{{ en ? "." : "主导。" }}</p>
+        <p class="foot-contact">{{ en ? "Contact: " : "联系：" }}<a href="mailto:xiaojuncheng@pjlab.org.cn">xiaojuncheng@pjlab.org.cn</a></p>
       </div>
       <a class="foot-logo-wrap" href="https://www.shlab.org.cn/" target="_blank" rel="noreferrer" aria-label="Shanghai Artificial Intelligence Laboratory">
         <img class="foot-logo" :src="`${base}committee/logo.webp`" alt="Shanghai Artificial Intelligence Laboratory" />
