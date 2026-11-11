@@ -884,7 +884,7 @@ td.ov-bench { display: flex; align-items: center; gap: 14px; }
   transition: box-shadow 200ms ease;
   &:hover { box-shadow: 0 12px 34px -10px color-mix(in srgb, var(--accent) 70%, transparent); }
 }
-.rex-note { font-size: 14px; color: var(--muted); }
+.rex-note { font-size: 14px; color: var(--muted); margin-left: 18px; }
 
 .rex-body { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 

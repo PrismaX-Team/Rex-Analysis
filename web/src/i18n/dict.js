@@ -70,7 +70,7 @@ export const dict = {
     en: "with the question, available data and conditions, and the definition of success agreed up front.",
   },
   "提交科学问题": { en: "Submit a scientific question" },
-  "中英文均可，方案不完整也能先交": { en: "Chinese or English; an incomplete proposal is fine to start" },
+  "中英文均可": { en: "Chinese or English" },
   "合作流程": { en: "How a collaboration runs" },
   "成果再发现": { en: "Rediscovery" },
   "求解与创新": { en: "Solve and innovate" },

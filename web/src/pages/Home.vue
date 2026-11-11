@@ -167,7 +167,7 @@
             </p>
             <div class="rex-go">
               <a class="rex-btn" :href="REX_URL" target="_blank" rel="noreferrer">{{ t("提交科学问题") }} ↗</a>
-              <span class="rex-note">{{ t("中英文均可，方案不完整也能先交") }}</span>
+              <span class="rex-note">{{ t("中英文均可") }}</span>
             </div>
           </div>
 
