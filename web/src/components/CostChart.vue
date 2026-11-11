@@ -1,8 +1,8 @@
 <template>
   <figure v-if="points.length > 1" class="cc">
     <figcaption class="cc-head">
-      <h2>分数与成本</h2>
-      <p>横轴是单题成本（对数刻度），纵轴是均分，点的面积表示单题用时。连线是 Pareto 前沿：在不多花钱的前提下分数最高的那些提交。</p>
+      <h2>{{ t("分数与成本") }}</h2>
+      <p>{{ t("横轴是单题成本（对数刻度），纵轴是均分，点的面积表示单题用时。连线是 Pareto 前沿：在不多花钱的前提下分数最高的那些提交。") }}</p>
     </figcaption>
 
     <div class="cc-plot" @pointerleave="hot = ''">
@@ -13,8 +13,8 @@
           <line v-for="t in xTicks" :key="`x${t}`" :x1="x(t)" :x2="x(t)" :y1="T" :y2="H - B" />
           <text v-for="t in xTicks" :key="`xt${t}`" :x="x(t)" :y="H - B + 20" text-anchor="middle">{{ tick(t) }}</text>
         </g>
-        <text class="cc-axis" :x="(L + W - R) / 2" :y="H - 6" text-anchor="middle">单题成本（美元，对数刻度）</text>
-        <text class="cc-axis" :transform="`translate(16 ${(T + H - B) / 2}) rotate(-90)`" text-anchor="middle">均分</text>
+        <text class="cc-axis" :x="(L + W - R) / 2" :y="H - 6" text-anchor="middle">{{ t("单题成本（美元，对数刻度）") }}</text>
+        <text class="cc-axis" :transform="`translate(16 ${(T + H - B) / 2}) rotate(-90)`" text-anchor="middle">{{ t("均分") }}</text>
 
         <path class="cc-front" :d="frontPath" />
 
@@ -52,21 +52,24 @@
       <div v-if="hotPoint" class="cc-tip" :style="tipStyle">
         <b>{{ hotPoint.score.toFixed(2) }}</b>
         <span class="cc-tip-name">{{ hotPoint.label }}</span>
-        <span>单题成本 {{ money(hotPoint.cost) }} · 单题用时 {{ duration(hotPoint.time) }}</span>
-        <span v-if="hotPoint.front" class="cc-tip-front">在 Pareto 前沿上</span>
+        <span>{{ t("单题成本") }} {{ money(hotPoint.cost) }} · {{ t("单题用时") }} {{ duration(hotPoint.time) }}</span>
+        <span v-if="hotPoint.front" class="cc-tip-front">{{ t("在 Pareto 前沿上") }}</span>
       </div>
     </div>
 
     <p class="cc-legend">
-      <span><i class="k-front"></i>Pareto 前沿</span>
-      <span><i class="k-dot"></i>其他提交</span>
-      <span><i class="k-size"></i>面积 = 单题用时</span>
+      <span><i class="k-front"></i>{{ t("Pareto 前沿") }}</span>
+      <span><i class="k-dot"></i>{{ t("其他提交") }}</span>
+      <span><i class="k-size"></i>{{ t("面积 = 单题用时") }}</span>
     </p>
   </figure>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
 
 const props = defineProps({
   rows: { type: Array, required: true },
@@ -203,6 +206,13 @@ function duration(s) {
   return h ? `${h}h ${String(m).padStart(2, "0")}m` : `${m}m`;
 }
 
-const describe = (p) => `${p.label}：均分 ${p.score.toFixed(2)}，单题成本 ${money(p.cost)}，单题用时 ${duration(p.time)}${p.front ? "，在 Pareto 前沿上" : ""}`;
-const aria = computed(() => `${points.value.length} 个提交的均分与单题成本，${frontIds.value.size} 个在 Pareto 前沿上。`);
+const describe = (p) =>
+  en.value
+    ? `${p.label}: mean ${p.score.toFixed(2)}, ${money(p.cost)} per task, ${duration(p.time)} per task${p.front ? ", on the Pareto frontier" : ""}`
+    : `${p.label}：均分 ${p.score.toFixed(2)}，单题成本 ${money(p.cost)}，单题用时 ${duration(p.time)}${p.front ? "，在 Pareto 前沿上" : ""}`;
+const aria = computed(() =>
+  en.value
+    ? `${points.value.length} submissions by mean score and cost per task; ${frontIds.value.size} on the Pareto frontier.`
+    : `${points.value.length} 个提交的均分与单题成本，${frontIds.value.size} 个在 Pareto 前沿上。`,
+);
 </script>

@@ -3,6 +3,7 @@
   "source": "InternScience/ResearchClawBench-Home data/leaderboard.json",
   "updated": "2026-11-05",
   "note": "均分取已评分题目的平均。大模型与智能体分开排名。",
+  "note_en": "Mean over scored tasks. Models and agents are ranked separately.",
   "domains": [
     "Astronomy",
     "Chemistry",
@@ -19,13 +20,16 @@
     {
       "id": "llm",
       "label": "大模型",
+      "label_en": "Models",
       "en": "Models",
       "harness": "ResearchHarness",
-      "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。"
+      "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。",
+      "note_en": "Every model runs in the same ResearchHarness pipeline, so only the model itself is compared."
     },
     {
       "id": "agent",
       "label": "智能体",
+      "label_en": "Agents",
       "en": "Agents"
     }
   ],

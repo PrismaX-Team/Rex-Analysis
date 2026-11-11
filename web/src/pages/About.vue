@@ -2,11 +2,11 @@
   <TopBar :bench="benchId" :version="version" />
   <main class="shell page">
     <p class="kicker">{{ bench?.name }} · About</p>
-    <h1>说明</h1>
-    <p class="lede">这一版的任务包长什么样、怎么评分、怎么提交。</p>
+    <h1>{{ t("说明") }}</h1>
+    <p class="lede">{{ t("这一版的任务包长什么样、怎么评分、怎么提交。") }}</p>
 
     <div class="doc-layout">
-      <nav class="doc-toc" aria-label="目录">
+      <nav class="doc-toc" :aria-label="t('目录')">
         <a v-for="h in toc" :key="h.id" :href="`#${h.id}`" @click.prevent="jump(h.id)">{{ h.text }}</a>
       </nav>
       <div class="doc-main">
@@ -21,12 +21,15 @@
 import { computed } from "vue";
 import TopBar from "../components/TopBar.vue";
 import ScoreNote from "../components/ScoreNote.vue";
-import { getAbout } from "../data/client";
+import { getAbout, getAboutEn } from "../data/client";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
 import { renderMarkdown } from "../data/markdown";
 import { useBench } from "../data/useBench";
 
 const { benchId, version, bench } = useBench();
-const source = computed(() => getAbout(benchId.value, version.value));
+const source = computed(() => (en.value ? getAboutEn(benchId.value, version.value) : getAbout(benchId.value, version.value)));
 
 // Top-level "# " headings become sections; give them ids so the side index can jump to them.
 const toc = computed(() =>

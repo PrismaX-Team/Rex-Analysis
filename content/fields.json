@@ -8,18 +8,27 @@
       "short": "RCB",
       "status": "live",
       "legend": "RCB 已上线",
-      "total": 40
+      "total": 40,
+      "legend_en": "RCB live"
     }
   ],
   "domains": [
     {
       "name": "生命",
+      "name_en": "Life sciences",
       "subfields": [
         "肿瘤生物学",
         "免疫学与免疫治疗",
         "RNA 生物学",
         "遗传学与基因组学",
         "细胞生物学"
+      ],
+      "subfields_en": [
+        "Tumour biology",
+        "Immunology and immunotherapy",
+        "RNA biology",
+        "Genetics and genomics",
+        "Cell biology"
       ],
       "topics": [
         "仿生水凝胶粘附",
@@ -34,12 +43,20 @@
     },
     {
       "name": "化学",
+      "name_en": "Chemistry",
       "subfields": [
         "理论与计算化学",
         "有机化学",
         "物理化学",
         "无机化学",
         "分析化学"
+      ],
+      "subfields_en": [
+        "Theoretical and computational chemistry",
+        "Organic chemistry",
+        "Physical chemistry",
+        "Inorganic chemistry",
+        "Analytical chemistry"
       ],
       "topics": [
         "KA-GNN 分子性质",
@@ -54,12 +71,20 @@
     },
     {
       "name": "材料",
+      "name_en": "Materials",
       "subfields": [
         "材料计算与设计",
         "高分子与有机功能材料",
         "量子材料",
         "无机材料",
         "能源材料"
+      ],
+      "subfields_en": [
+        "Materials computation and design",
+        "Polymers and organic functional materials",
+        "Quantum materials",
+        "Inorganic materials",
+        "Energy materials"
       ],
       "topics": [
         "交错磁材料搜索",
@@ -74,12 +99,20 @@
     },
     {
       "name": "物理",
+      "name_en": "Physics",
       "subfields": [
         "粒子物理与高能物理",
         "凝聚态物理",
         "光学与量子信息",
         "核物理",
         "等离子体物理"
+      ],
+      "subfields_en": [
+        "Particle and high-energy physics",
+        "Condensed matter physics",
+        "Optics and quantum information",
+        "Nuclear physics",
+        "Plasma physics"
       ],
       "topics": [
         "团簇壳层路径",
@@ -94,12 +127,20 @@
     },
     {
       "name": "天文",
+      "name_en": "Astronomy",
       "subfields": [
         "高能天体物理",
         "宇宙学",
         "星系与恒星",
         "太阳与空间物理",
         "行星科学"
+      ],
+      "subfields_en": [
+        "High-energy astrophysics",
+        "Cosmology",
+        "Galaxies and stars",
+        "Solar and space physics",
+        "Planetary science"
       ],
       "topics": [
         "超轻玻色子约束",
@@ -114,12 +155,20 @@
     },
     {
       "name": "地球",
+      "name_en": "Earth science",
       "subfields": [
         "大气科学与气候",
         "海洋科学",
         "地质学与地球化学",
         "冰冻圈科学",
         "生态学"
+      ],
+      "subfields_en": [
+        "Atmospheric science and climate",
+        "Ocean science",
+        "Geology and geochemistry",
+        "Cryosphere science",
+        "Ecology"
       ],
       "topics": [
         "全球冰川质量变化",
@@ -134,12 +183,20 @@
     },
     {
       "name": "能源",
+      "name_en": "Energy",
       "subfields": [
         "电力系统",
         "电池与储能",
         "太阳能与风能",
         "氢能",
         "核能"
+      ],
+      "subfields_en": [
+        "Power systems",
+        "Batteries and storage",
+        "Solar and wind energy",
+        "Hydrogen energy",
+        "Nuclear energy"
       ],
       "topics": [
         "电池老化参数辨识",
@@ -154,12 +211,20 @@
     },
     {
       "name": "信息",
+      "name_en": "Information",
       "subfields": [
         "理论计算机科学",
         "人工智能",
         "计算机系统",
         "软件工程",
         "数据科学与数据库"
+      ],
+      "subfields_en": [
+        "Theoretical computer science",
+        "Artificial intelligence",
+        "Computer systems",
+        "Software engineering",
+        "Data science and databases"
       ],
       "topics": [
         "统一多模态生成",
@@ -174,12 +239,20 @@
     },
     {
       "name": "神经科学",
+      "name_en": "Neuroscience",
       "subfields": [
         "系统与环路神经科学",
         "分子与细胞神经科学",
         "认知神经科学",
         "计算神经科学",
         "神经疾病"
+      ],
+      "subfields_en": [
+        "Systems and circuits neuroscience",
+        "Molecular and cellular neuroscience",
+        "Cognitive neuroscience",
+        "Computational neuroscience",
+        "Neurological disease"
       ],
       "topics": [
         "行为分类流程复现",
@@ -194,12 +267,20 @@
     },
     {
       "name": "数学",
+      "name_en": "Mathematics",
       "subfields": [
         "代数与数论",
         "几何与拓扑",
         "分析与微分方程",
         "概率论与数理统计",
         "计算数学与优化"
+      ],
+      "subfields_en": [
+        "Algebra and number theory",
+        "Geometry and topology",
+        "Analysis and differential equations",
+        "Probability and statistics",
+        "Computational mathematics and optimisation"
       ],
       "topics": [
         "拥挤场景多目标跟踪",
@@ -214,12 +295,20 @@
     },
     {
       "name": "医学",
+      "name_en": "Medicine",
       "subfields": [
         "肿瘤学",
         "医学影像与智能诊断",
         "临床医学",
         "心脑血管疾病",
         "公共卫生与流行病学"
+      ],
+      "subfields_en": [
+        "Oncology",
+        "Medical imaging and intelligent diagnosis",
+        "Clinical medicine",
+        "Cardiovascular and cerebrovascular disease",
+        "Public health and epidemiology"
       ],
       "topics": [],
       "counts": {
@@ -229,12 +318,20 @@
     },
     {
       "name": "多领域综合",
+      "name_en": "Multi-domain",
       "subfields": [
         "专业知识工作",
         "芯片设计",
         "网络安全",
         "生物医药研发",
         "科学工作流"
+      ],
+      "subfields_en": [
+        "Professional knowledge work",
+        "Chip design",
+        "Cybersecurity",
+        "Biomedical R&D",
+        "Scientific workflows"
       ],
       "topics": [],
       "counts": {

@@ -25,14 +25,32 @@ Agent Frontier Exam 评测研究 Agent 能否面向真实、尚未解决的前�
 
 # 任务包
 
-每个任务都是一份五部分任务包：Instruction、Input、Environment、Verifier 与 Meta。Validation 在研究阶段按任务设定的预算向 Agent 提供反馈；Test 只对冻结后的提交离线、确定性地评分一次。最优可达结果事先未知。
+每个任务都是一份 Harbor 格式任务包，以 `task.toml` 为配置入口，`instruction.md` 为面向 Agent 的指令，解题环境与评测环境严格隔离。评测一次性对冻结后的提交离线、确定性地评分；最优可达结果事先未知。
 
-- `instruction.json`：面向 Agent 的任务说明、输入声明、提交产物、已提供环境、额外要求与运行上限。
-- `input/`：只包含 Agent 可见的科学输入与提交模板。
-- `environment/`：`environment.json` 选择运营方默认镜像或任务专用 Containerfile。
-- `verifier/validation/`：Agent 在研究过程中可请求的反馈；可没有。
-- `verifier/test/`：提交冻结后的一次最终评分；离线、确定性。
-- `meta.json`：任务身份、数据来源、指标语义与公开分数映射。
+```text
+task_package/
+├── task.toml                 运行配置与产物路径
+├── instruction.md            Agent 可见任务指令
+├── environment/
+│   ├── Dockerfile            解题环境定义
+│   ├── input/                Agent 可见输入
+│   └── tools/                Agent 工具（按需）
+├── tests/
+│   ├── Dockerfile            独立评测环境定义
+│   ├── test.sh               评测入口
+│   ├── check_outputs.py      评分实现
+│   ├── input/                独立评测输入副本
+│   └── tools/                评测工具（按需）
+├── harness/                  集成约定及外部调度适配材料（按需）
+└── solution/                 参考解（私有，按需）
+```
+
+- `task.toml`：运行配置，包含任务名称、署名、资源限制、超时、网络模式与产物路径。
+- `instruction.md`：面向 Agent 的完整任务说明，包含输入描述、输出格式、约束条件与成功标准。
+- `environment/`：解题镜像构建上下文。`Dockerfile` 安装运行依赖；`input/` 存放 Agent 可见的科学输入；`tools/` 存放 Agent 可调用的工具代码与接口（按需）。
+- `tests/`：独立评测镜像构建上下文，与解题环境严格隔离，Agent 修改解题输入不影响评分基准。评分结果写入 `/logs/verifier/reward.json`，详细记录写入 `metrics.json`。
+- `harness/`：集成约定与外部调度适配材料，记录与 Harbor 或其他调度框架的集成方式（按需）。
+- `solution/`：参考解，仅供 oracle 验证，不会复制到解题镜像（按需）。
 
 # 参与共建
 

@@ -6,22 +6,24 @@
     {
       "id": "advisory",
       "label": "顾问委员会",
+      "label_en": "Advisory Committee",
       "desc": "支持任务遴选、科学审核与评测可信度。",
+      "desc_en": "Supports task selection, scientific review and evaluation integrity.",
       "members": [
-        { "name": "张文龙", "title": "Scientific Agents", "affiliation": "上海人工智能实验室", "photo": "wenlong-zhang.webp", "url": "https://wenlongzhang0517.github.io/" },
-        { "name": "张铂", "title": "Scientific Agents", "affiliation": "上海人工智能实验室", "photo": "bo-zhang.webp", "url": "https://scholar.google.com/citations?user=UoAEwT0AAAAJ&hl=zh-CN" },
-        { "name": "张舒飞", "title": "物理", "affiliation": "", "photo": "", "url": "https://openreview.net/profile?id=~Shufei_Zhang1" },
-        { "name": "符天凡", "title": "化学、材料", "affiliation": "南京大学", "photo": "tianfan-fu.webp", "url": "https://scholar.google.com.hk/citations?user=KPQ49w4AAAAJ&hl=zh-CN&oi=ao" },
-        { "name": "胡铭", "title": "医学", "affiliation": "上海人工智能实验室 · 莫纳什大学", "photo": "", "url": "https://scholar.google.com/citations?user=a3EydJMAAAAJ&hl=en" },
-        { "name": "何军军", "title": "医学", "affiliation": "上海创智学院", "photo": "junjun-he.webp", "url": "https://www.sii.edu.cn/2026/0506/c92a958/page.htm" },
-        { "name": "宋纯锋", "title": "脑机理", "affiliation": "上海人工智能实验室", "photo": "chunfeng-song.webp", "url": "https://cf-song.github.io/" },
-        { "name": "李玉强", "title": "化学", "affiliation": "上海人工智能实验室", "photo": "yuqiang-li.webp", "url": "https://scholar.google.com/citations?user=RQqws5gAAAAJ&hl=zh-CN" },
-        { "name": "零丰华", "title": "地球科学", "affiliation": "上海人工智能实验室", "photo": "fenghua-ling.webp", "url": "https://scholar.google.com/citations?user=uRQFvZYAAAAJ&hl=zh-CN" }
+        {"name": "张铂", "title": "Scientific Agents", "affiliation": "上海人工智能实验室", "photo": "bo-zhang.webp", "url": "https://scholar.google.com/citations?user=UoAEwT0AAAAJ&hl=zh-CN", "name_en": "Bo Zhang", "title_en": "Scientific agents", "affiliation_en": "Shanghai Artificial Intelligence Laboratory"},
+        {"name": "张舒飞", "title": "物理", "affiliation": "上海人工智能实验室", "photo": "", "url": "https://openreview.net/profile?id=~Shufei_Zhang1", "name_en": "Shufei Zhang", "title_en": "Physics", "affiliation_en": "Shanghai Artificial Intelligence Laboratory"},
+
+        {"name": "张文龙", "title": "Scientific Agents", "affiliation": "上海人工智能实验室", "photo": "wenlong-zhang.webp", "url": "https://wenlongzhang0517.github.io/", "name_en": "Wenlong Zhang", "title_en": "Scientific agents", "affiliation_en": "Shanghai Artificial Intelligence Laboratory"},
+        {"name": "零丰华", "title": "地球科学", "affiliation": "上海人工智能实验室", "photo": "fenghua-ling.webp", "url": "https://scholar.google.com/citations?user=uRQFvZYAAAAJ&hl=zh-CN", "name_en": "Fenghua Ling", "title_en": "Earth science", "affiliation_en": "Shanghai Artificial Intelligence Laboratory"},
+        {"name": "胡铭", "title": "医学", "affiliation": "上海人工智能实验室 · 莫纳什大学", "photo": "ming_hu.webp", "url": "https://uni-medical.github.io/gmai-web/zh/team/ming-hu/", "name_en": "Ming Hu", "title_en": "Medicine", "affiliation_en": "Shanghai Artificial Intelligence Laboratory · Monash University"},
+        {"name": "赵振", "title": "Scientific Agents", "affiliation": "上海人工智能实验室", "photo": "zhen-zhao.webp", "url": "https://scholar.google.com/citations?user=7mpuhO8AAAAJ&hl=en", "name_en": "Zhen Zhao", "title_en": "Scientific agents", "affiliation_en": "Shanghai Artificial Intelligence Laboratory"},
+        {"name": "符天凡", "title": "化学、材料", "affiliation": "南京大学", "photo": "tianfan-fu.webp", "url": "https://scholar.google.com.hk/citations?user=KPQ49w4AAAAJ&hl=zh-CN&oi=ao", "name_en": "Tianfan Fu", "title_en": "Chemistry and materials", "affiliation_en": "Nanjing University"}
       ]
     },
     {
       "id": "academic",
       "label": "学术委员会",
+      "label_en": "Academic Committee",
       "desc": "",
       "members": []
     }

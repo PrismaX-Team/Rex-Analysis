@@ -7,70 +7,80 @@
       "label": "天文学",
       "en": "Astronomy",
       "color": "#6a4cff",
-      "color_dark": "#8c75ff"
+      "color_dark": "#8c75ff",
+      "label_en": "Astronomy"
     },
     {
       "id": "Physics",
       "label": "物理",
       "en": "Physics",
       "color": "#2f6bff",
-      "color_dark": "#4e81ff"
+      "color_dark": "#4e81ff",
+      "label_en": "Physics"
     },
     {
       "id": "Material",
       "label": "材料",
       "en": "Materials",
       "color": "#0a9ec2",
-      "color_dark": "#05a1c7"
+      "color_dark": "#05a1c7",
+      "label_en": "Materials"
     },
     {
       "id": "Chemistry",
       "label": "化学",
       "en": "Chemistry",
       "color": "#0e9f86",
-      "color_dark": "#0aa388"
+      "color_dark": "#0aa388",
+      "label_en": "Chemistry"
     },
     {
       "id": "Life",
       "label": "生命科学",
       "en": "Life",
       "color": "#35a24a",
-      "color_dark": "#32a548"
+      "color_dark": "#32a548",
+      "label_en": "Life sciences"
     },
     {
       "id": "Neuroscience",
       "label": "神经科学",
       "en": "Neuroscience",
       "color": "#cf9a00",
-      "color_dark": "#cf9a00"
+      "color_dark": "#cf9a00",
+      "label_en": "Neuroscience"
     },
     {
       "id": "Information",
       "label": "信息科学",
       "en": "Information",
       "color": "#ef6a24",
-      "color_dark": "#f4681f"
+      "color_dark": "#f4681f",
+      "label_en": "Information science"
     },
     {
       "id": "Math",
       "label": "数学",
       "en": "Mathematics",
       "color": "#e3406c",
-      "color_dark": "#ea537b"
+      "color_dark": "#ea537b",
+      "label_en": "Mathematics"
     },
     {
       "id": "Energy",
       "label": "能源",
       "en": "Energy",
       "color": "#bf3bcf",
-      "color_dark": "#cc59da"
+      "color_dark": "#cc59da",
+      "label_en": "Energy"
     },
     {
       "id": "Earth",
       "label": "地球科学",
       "en": "Earth",
       "color": "#9a6b34",
-      "color_dark": "#b87e3a"
+      "color_dark": "#b87e3a",
+      "label_en": "Earth science"
     }
   ],
   "labels": {
@@ -248,5 +258,47 @@
         "Energy_003"
       ]
     }
-  ]
+  ],
+  "labels_en": {
+    "Astronomy_000": "Constraining ultralight bosons with superradiance",
+    "Astronomy_001": "Early dark energy against DESI BAO",
+    "Astronomy_002": "A one-percent measurement of the Hubble constant",
+    "Astronomy_003": "Binary black hole waveforms from numerical relativity",
+    "Chemistry_000": "Kolmogorov–Arnold graph networks for molecular properties",
+    "Chemistry_001": "Unified structure prediction for biomolecular complexes",
+    "Chemistry_002": "HADDOCK3 docking of biomolecular assemblies",
+    "Chemistry_003": "Learning the latent-charge potential energy surface",
+    "Earth_000": "Global glacier mass change across observation methods",
+    "Earth_001": "Reproducing a cloud-seeding record",
+    "Earth_002": "Compound climate risk for mangroves",
+    "Earth_003": "Fifteen-day global weather forecasting",
+    "Energy_000": "Parameter identification for battery ageing",
+    "Energy_001": "Dispatch for a low-carbon British grid",
+    "Energy_002": "Delivered cost of African green hydrogen",
+    "Energy_003": "A campus building-energy dataset",
+    "Information_000": "Unified multimodal understanding and generation",
+    "Information_001": "Training-free fine-grained perception for multimodal LLMs",
+    "Information_002": "Can an LLM do Hartree–Fock by hand?",
+    "Information_003": "Network intrusion detection from traffic flows",
+    "Life_000": "Adhesion of bio-inspired hydrogels from sequence",
+    "Life_001": "Personalised neoantigen vaccine design",
+    "Life_002": "Retrieval of protein complex structures",
+    "Life_003": "Aligning raw nanopore signals",
+    "Material_000": "An AI search engine for altermagnets",
+    "Material_001": "Multimodal materials AI across images and crystal graphs",
+    "Material_002": "The MACE atomic foundation model",
+    "Material_003": "Inverse design of recyclable vitrimeric polymers",
+    "Math_000": "Multi-object tracking in crowded scenes",
+    "Math_001": "Accelerated optimisation and ADMM",
+    "Math_002": "Multi-agent path finding on grid maps",
+    "Math_003": "Automated proofs of olympiad geometry",
+    "Neuroscience_000": "Reproducing a behaviour-classification pipeline",
+    "Neuroscience_001": "The Drosophila motion-pathway connectome",
+    "Neuroscience_002": "Merging over-segmented neurons in EM volumes",
+    "Neuroscience_003": "Choosing features for single-cell trajectories",
+    "Physics_000": "Shell structure paths in atomic clusters",
+    "Physics_001": "Superfluid stiffness in magic-angle twisted bilayer graphene",
+    "Physics_002": "Random circuit sampling on arbitrary geometries",
+    "Physics_003": "Floquet states in epitaxial graphene"
+  }
 }

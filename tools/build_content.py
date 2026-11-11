@@ -120,11 +120,14 @@ def build_v1(src: Path) -> None:
         "source": "InternScience/ResearchClawBench-Home data/leaderboard.json",
         "updated": UPDATED,
         "note": "均分取已评分题目的平均。大模型与智能体分开排名。",
+        "note_en": "Mean over scored tasks. Models and agents are ranked separately.",
         "domains": domains,
         # Models come first: the home carousel, the overall table and the leaderboard's default tab all read groups[0].
         "groups": [
-            {"id": "llm", "label": "大模型", "en": "Models", "harness": "ResearchHarness", "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。"},
-            {"id": "agent", "label": "智能体", "en": "Agents"},
+            {"id": "llm", "label": "大模型", "label_en": "Models", "en": "Models", "harness": "ResearchHarness",
+             "note": "所有模型在同一套 ResearchHarness 流程下运行，只比模型本身。",
+             "note_en": "Every model runs in the same ResearchHarness pipeline, so only the model itself is compared."},
+            {"id": "agent", "label": "智能体", "label_en": "Agents", "en": "Agents"},
         ],
         "frontier": frontier,
         "rows": [{k: v for k, v in r.items() if not k.startswith("_")} for r in ordered],
@@ -146,6 +149,7 @@ def build_v1(src: Path) -> None:
             "cost_usd": r["cost_usd"],
             "duration_seconds": r["duration_seconds"],
             "report_note": "分题报告、代码和评分理由仍在原项目站。",
+            "report_note_en": "Per-task reports, code and scoring rationale remain on the original project site.",
             "report_url": HOME,
             "tasks": [
                 {
@@ -240,6 +244,7 @@ def build_v1_pass5(src: Path) -> None:
         "source": "InternScience/ResearchClawBench-Home data/pass5_leaderboard.json",
         "generated_at": data.get("generated_at", ""),
         "note": "每题跑 5 次取最高分；失败或未评分的尝试按 0 计。只覆盖部分独立大模型。",
+        "note_en": "Best of five runs per task; failed or unscored attempts count as zero. Covers only some standalone models.",
         "domains": domains,
         "frontier": {
             t: (lambda top: {"score": top["tasks"][i]["score"], "run_id": top["run_id"]})(max(rows, key=lambda r: r["tasks"][i]["score"]))

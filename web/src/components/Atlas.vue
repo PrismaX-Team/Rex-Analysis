@@ -4,7 +4,7 @@
     :class="{ live: interactive, lit: !!hot }"
     viewBox="-540 -540 1080 1080"
     role="img"
-    aria-label="1.0 任务星图：十个学科，四十道题，方法线连接跨学科的题"
+    :aria-label="t('1.0 任务星图：十个学科，四十道题，方法线连接跨学科的题')"
   >
     <defs>
       <radialGradient id="atlas-core" r="0.5">
@@ -62,7 +62,7 @@
       <circle class="halo" :cx="domain.x" :cy="domain.y" r="74" />
       <circle class="field" :cx="domain.x" :cy="domain.y" r="52" />
       <text class="dname" :x="domain.text.x" :y="domain.text.y" :text-anchor="domain.text.anchor">{{ domain.en }}</text>
-      <text class="dsub" :x="domain.text.x" :y="domain.text.y + 20" :text-anchor="domain.text.anchor">{{ domain.label }} · {{ domain.tasks.length }}</text>
+      <text class="dsub" :x="domain.text.x" :y="domain.text.y + 20" :text-anchor="domain.text.anchor">{{ en ? domain.label_en || domain.label : domain.label }} · {{ domain.tasks.length }}</text>
       <g
         v-for="task in domain.tasks"
         :key="task.id"
@@ -95,6 +95,8 @@
 </template>
 
 <script setup>
+import { useI18n } from "../i18n/useI18n";
+const { t, en } = useI18n();
 import { computed } from "vue";
 import { useTheme } from "../theme/useTheme";
 

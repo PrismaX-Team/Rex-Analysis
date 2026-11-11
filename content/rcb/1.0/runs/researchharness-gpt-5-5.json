@@ -12,6 +12,7 @@
   "cost_usd": 1.822,
   "duration_seconds": 486,
   "report_note": "分题报告、代码和评分理由仍在原项目站。",
+  "report_note_en": "Per-task reports, code and scoring rationale remain on the original project site.",
   "report_url": "https://internscience.github.io/ResearchClawBench-Home/",
   "tasks": [
     {

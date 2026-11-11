@@ -4,19 +4,19 @@
     <thead>
       <tr>
         <th class="ov-bench">Benchmark</th>
-        <th class="ov-cat">分类</th>
+        <th class="ov-cat">{{ t("分类") }}</th>
         <th v-for="m in medals" :key="m.n" class="ov-place"><i v-if="m.cls" class="medal" :class="m.cls"></i>{{ m.label }}</th>
-        <th class="ov-more">详情</th>
+        <th class="ov-more">{{ t("详情") }}</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="row in overall" :key="row.id" :style="{ '--c': row.color }" @click="$router.push(row.to)">
         <td class="ov-bench">
           <span class="ov-mono">{{ row.short }}</span>
-          <span class="ov-name">{{ row.name }}<small v-if="row.groupLabel">{{ row.groupLabel }}榜</small></span>
+          <span class="ov-name">{{ row.name }}<small v-if="row.groupLabel">{{ row.groupLabel }} {{ t("榜") }}</small></span>
         </td>
         <td class="ov-cat"><span class="ov-chip">{{ row.category }}</span></td>
-        <td v-if="row.pending" :colspan="medals.length" class="ov-pending">{{ row.pending }}</td>
+        <td v-if="row.pending" :colspan="medals.length" class="ov-pending">{{ t("暂无公开成绩") }}</td>
         <td v-for="(m, i) in medals" v-else :key="m.n" class="ov-place">
           <template v-if="row.top[i]">
             <span class="ov-sys">{{ row.top[i].system }}</span>
@@ -25,7 +25,7 @@
           </template>
           <span v-else class="ov-empty">–</span>
         </td>
-        <td class="ov-more"><router-link :to="row.to" @click.stop>查看 →</router-link></td>
+        <td class="ov-more"><router-link :to="row.to" @click.stop>{{ t("查看 →") }}</router-link></td>
       </tr>
     </tbody>
   </table>
@@ -36,6 +36,10 @@
 import { computed } from "vue";
 import { useTheme } from "../theme/useTheme";
 import { getBenches, getLeaderboard } from "../data/client";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
+const pick = (zh, enText) => (en.value && enText ? enText : zh);
 
 // Shared by the home page and the site-wide leaderboard page.
 const { theme } = useTheme();
@@ -62,8 +66,8 @@ const overall = computed(() =>
         return [{
           id: bench.id,
           short: bench.short,
-          name: bench.name,
-          category: bench.category || bench.task_type,
+          name: pick(bench.name, bench.name_en),
+          category: pick(bench.category || bench.task_type, bench.category_en || bench.task_type_en),
           groupLabel: "",
           color: accentOf(bench),
           to: { path: `${bench.entry}/${version}/tasks` },
@@ -76,9 +80,9 @@ const overall = computed(() =>
       return groups.map((g) => ({
         id: `${bench.id}-${g.id}`,
         short: bench.short,
-        name: bench.name,
-        category: bench.category || bench.task_type,
-        groupLabel: groups.length > 1 ? g.label : "",
+        name: pick(bench.name, bench.name_en),
+        category: pick(bench.category || bench.task_type, bench.category_en || bench.task_type_en),
+        groupLabel: groups.length > 1 ? pick(g.label, g.label_en) : "",
         color: accentOf(bench),
         to: { path: `${bench.entry}/${version}/leaderboard`, query: g.id ? { group: g.id } : {} },
         top: board.rows

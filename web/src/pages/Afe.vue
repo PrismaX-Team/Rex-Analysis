@@ -8,8 +8,9 @@
         Rex-Analysis
       </router-link>
       <span class="crumb" aria-hidden="true">/</span>
-      <router-link class="bench-crumb" to="/afe">{{ bench.name }}</router-link>
+      <router-link class="bench-crumb" to="/afe">{{ pick(bench.name, bench.name_en) }}</router-link>
       <a class="github" :href="bench.github" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <LocaleToggle />
       <ThemeToggle />
     </header>
 
@@ -20,54 +21,54 @@
           <span>AgentFrontier</span>
           <span class="grad">Exam 1.0</span>
         </h1>
-        <p class="afe-tagline">{{ bench.tagline }}</p>
-        <p class="afe-lede">{{ bench.summary }}</p>
+        <p class="afe-tagline">{{ pick(bench.tagline, bench.tagline_en) }}</p>
+        <p class="afe-lede">{{ pick(bench.summary, bench.summary_en) }}</p>
 
         <div class="rcb-go">
-          <router-link class="go-solid" :to="`${base}/about`">评测说明</router-link>
-          <a class="go-ghost" :href="REX_URL" target="_blank" rel="noreferrer">参与共建 ↗</a>
+          <router-link class="go-solid" :to="`${base}/about`">{{ t("评测说明") }}</router-link>
+          <a class="go-ghost" :href="REX_URL" target="_blank" rel="noreferrer">{{ t("参与共建 ↗") }}</a>
         </div>
       </section>
 
       <section id="philosophy" class="afe-sec">
         <header class="afe-sec-head">
-          <p class="eyebrow">设计哲学</p>
-          <h2>一个能够持续向前的 Benchmark</h2>
+          <p class="eyebrow">{{ t("设计哲学") }}</p>
+          <h2>{{ t("一个能够持续向前的 Benchmark") }}</h2>
         </header>
         <ol class="afe-phil">
           <li v-for="p in philosophy" :key="p.n">
             <span class="afe-phil-n">{{ p.n }}</span>
-            <b>{{ p.name }}</b>
-            <p>{{ p.text }}</p>
+            <b>{{ t(p.name) }}</b>
+            <p>{{ t(p.text) }}</p>
           </li>
         </ol>
       </section>
 
       <section id="traits" class="afe-sec">
         <header class="afe-sec-head">
-          <p class="eyebrow">任务特性</p>
-          <h2>一道题要满足四个条件</h2>
+          <p class="eyebrow">{{ t("任务特性") }}</p>
+          <h2>{{ t("一道题要满足四个条件") }}</h2>
         </header>
         <ul class="afe-traits">
-          <li v-for="t in traits" :key="t.name">
-            <b>{{ t.name }}</b>
-            <p>{{ t.text }}</p>
+          <li v-for="item in traits" :key="item.name">
+            <b>{{ t(item.name) }}</b>
+            <p>{{ t(item.text) }}</p>
           </li>
         </ul>
       </section>
 
       <section id="team" class="afe-sec afe-team">
         <header class="afe-sec-head">
-          <p class="eyebrow">团队</p>
-          <h2>由身处科学前沿的专家共同支持</h2>
+          <p class="eyebrow">{{ t("团队") }}</p>
+          <h2>{{ t("由身处科学前沿的专家共同支持") }}</h2>
         </header>
         <Committee />
       </section>
     </main>
 
     <footer class="home-foot">
-      <span>在未解决的科学问题上持续突破。</span>
-      <span>{{ bench.name }}</span>
+      <span>{{ t("在未解决的科学问题上持续突破。") }}</span>
+      <span>{{ pick(bench.name, bench.name_en) }}</span>
     </footer>
   </div>
 </template>
@@ -77,6 +78,11 @@ import ThemeToggle from "../components/ThemeToggle.vue";
 import Committee from "../components/Committee.vue";
 import { REX_URL } from "../data/links";
 import { getBench } from "../data/client";
+import LocaleToggle from "../components/LocaleToggle.vue";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
+const pick = (zh, enText) => (en.value && enText ? enText : zh);
 
 const bench = getBench("afe");
 const version = bench.version || "1.0";

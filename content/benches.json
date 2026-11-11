@@ -20,7 +20,17 @@
       "tasks_lede": "每道题来自一篇论文：题面、数据和相关工作公开，评分材料不在这个站上。",
       "board_lede": "按均分排名，每格颜色表示该学科的平均分。点一行展开分题成绩。",
       "private_note": "评分清单、目标论文和参考图不在这个站上。",
-      "launched": "2026-10"
+      "launched": "2026-10",
+      "name_en": "ResearchClaw Bench",
+      "tagline_en": "An agent reproduces a paper",
+      "summary_en": "Each task package comes from a real paper: statement, data and related work are given, the answers sit in a hidden scoring checklist. Forty public tasks across ten fields, linked into a network by shared methods.",
+      "task_type_en": "Task package · open-domain reproduction",
+      "scoring_en": "RADS 0–100",
+      "tasks_lede_en": "Every task comes from a paper: statement, data and related work are public, scoring material is not on this site.",
+      "board_lede_en": "Ranked by mean score; cell colour is the domain mean. Open a row for per-task results.",
+      "board_empty_en": "No public submissions for this version yet.",
+      "private_note_en": "The scoring checklist, target paper and reference figures are not on this site.",
+      "category_en": "Research agents"
     },
     {
       "id": "afe",
@@ -41,7 +51,17 @@
       "board_lede": "每个结果都相对于其他 Agent 和当前前沿进行衡量。",
       "board_empty": "暂无公开成绩。",
       "private_note": "Verifier 在运行前冻结，并在离线环境中评分。",
-      "launched": "2026-11"
+      "launched": "2026-11",
+      "name_en": "AgentFrontierExam 1.0",
+      "tagline_en": "Measure true innovation at scientific frontiers where the optimum is still unknown.",
+      "summary_en": "Agent Frontier Exam evaluates whether research agents can independently investigate real, unresolved frontier problems in an open environment, propose and validate improvements, make measurable progress and advance the boundary of the problem.",
+      "task_type_en": "Task package · frontier problems",
+      "scoring_en": "Deterministic verification",
+      "tasks_lede_en": "Tasks are being prepared.",
+      "board_lede_en": "Every result is measured against other agents and the current frontier.",
+      "board_empty_en": "No public scores yet.",
+      "private_note_en": "The verifier is frozen before a run and scores offline.",
+      "category_en": "Research agents"
     }
   ],
   "placeholders": 2,

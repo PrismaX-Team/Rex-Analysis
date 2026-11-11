@@ -23,7 +23,8 @@
           "description": "Contains the posterior distribution samples for the mass and dimensionless spin parameter of the stellar-mass black hole in the X-ray binary M33 X-7, serving as the primary dataset for demonstrating and applying the Bayesian constraint framework."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_000",
+      "domain_label_en": "Astronomy"
     },
     {
       "task_id": "Astronomy_001",
@@ -41,7 +42,8 @@
           "description": "This dataset contains the best-fit parameters with 1σ errors for ΛCDM, EDE, and w₀wₐ models from Tables II/III of the paper, along with manually extracted DESI BAO and Union3 SNe data points from Figure 6, used to reproduce the paper's key parameter constraints and distance comparison results."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_001",
+      "domain_label_en": "Astronomy"
     },
     {
       "task_id": "Astronomy_002",
@@ -59,7 +61,8 @@
           "description": "A minimal dataset to reproduce the Hubble constant measurement using the generalized least squares framework of the Distance Network, including geometric anchors, primary distance indicator measurements, secondary calibrations, and Hubble flow observations."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_002",
+      "domain_label_en": "Astronomy"
     },
     {
       "task_id": "Astronomy_003",
@@ -89,7 +92,8 @@
           "description": "This dataset contrasts waveform differences arising from two extrapolation‑order comparisons: N=2 vs N=3 and N=2 vs N=4. It contains 1200 rows and two columns; the first column stores the differences between extrapolation orders 2 and 3, the second column stores differences between orders 2 and 4. The synthetic values are drawn from log‑normal distributions with medians of 2×10⁻⁵ (for N2 vs N3) and 5×10⁻⁵ (for N2 vs N4), reflecting the trend that higher‑order extrapolation pairs yield larger discrepancies. In the SXS catalog paper, such comparisons are used to evaluate the convergence of the extrapolation procedure that extracts waveforms from finite‑radius simulation data to infinite null infinity, an essential step for producing reliable templates for gravitational‑wave astronomy."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Astronomy_003",
+      "domain_label_en": "Astronomy"
     },
     {
       "task_id": "Chemistry_000",
@@ -131,7 +135,8 @@
           "description": "The MUV (Maximum Unbiased Validation) dataset is a large-scale molecular benchmark dataset consisting of small-molecule compounds represented by SMILES strings and labeled across multiple virtual screening tasks. It is designed to provide challenging and unbiased evaluation settings for molecular property prediction models. The dataset includes multiple binary classification tasks and exhibits high class imbalance, making it particularly difficult for predictive modeling."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_000",
+      "domain_label_en": "Chemistry"
     },
     {
       "task_id": "Chemistry_001",
@@ -155,7 +160,8 @@
           "description": "This file provides the experimental 3D conformation of the FK506 ligand, stored in the standard Structure-Data File (SDF) format. It contains the full atomic coordinates, bond connectivity, and chemical properties of the molecule. This is the primary reference for evaluating ligand pose prediction accuracy; the ligand RMSD is computed by aligning the predicted ligand coordinates to this reference using symmetry-aware Hungarian matching."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_001",
+      "domain_label_en": "Chemistry"
     },
     {
       "task_id": "Chemistry_002",
@@ -179,7 +185,8 @@
           "description": "SKEMPI 2.0 database containing experimental binding affinity changes upon mutation, used for validation."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_002",
+      "domain_label_en": "Chemistry"
     },
     {
       "task_id": "Chemistry_003",
@@ -209,7 +216,8 @@
           "description": "This dataset includes Ag₃ trimers in two different charge states (+1 and -1) with varying bond lengths and random distortions. It is used to demonstrate that a short‑range model with global charge embedding (or separate training) is necessary to distinguish potential energy surfaces of different charge states, as shown in Fig. 5e and Table 1 of the paper."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Chemistry_003",
+      "domain_label_en": "Chemistry"
     },
     {
       "task_id": "Earth_000",
@@ -227,7 +235,8 @@
           "description": "This dataset is the result of collecting, homogenizing, combining, and analyzing regional estimates derived from four primary observation methods (in situ glaciological measurements, digital elevation model differencing, satellite altimetry, and gravimetry) as well as integrated methods. It incorporates 233 regional estimates of glacier mass change contributed by 35 research teams and approximately 450 data contributors."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_000",
+      "domain_label_en": "Earth science"
     },
     {
       "task_id": "Earth_001",
@@ -245,7 +254,8 @@
           "description": "Official project-level cloud-seeding records released with the target paper, covering reported U.S. activities from 2000 to 2025. This is the only dataset used in this submission and it supports all reproduced tables, figures, and summary conclusions. The dataset contains 12 structured fields per record: filename, project name, year, season, state, operator affiliation, seeding agent, deployment apparatus, stated purpose, target area, control area, start date, and end date. The data enables comprehensive analysis of temporal trends, geographic distributions, operational characteristics, and methodological patterns in U.S. weather modification activities over a 25-year period."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_001",
+      "domain_label_en": "Earth science"
     },
     {
       "task_id": "Earth_002",
@@ -287,7 +297,8 @@
           "description": "Historical tropical cyclone tracks from the MIT model (Emanuel et al., 2006) downscaled from CMIP6 MPI-ESM1-2-HR, covering 1850–2014. Used to calculate baseline cyclone frequencies after filtering and downsampling."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_002",
+      "domain_label_en": "Earth science"
     },
     {
       "task_id": "Earth_003",
@@ -311,7 +322,8 @@
           "description": "FuXi output forecasts (006.nc) at 6-hour intervals up to 15 days."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Earth_003",
+      "domain_label_en": "Earth science"
     },
     {
       "task_id": "Energy_000",
@@ -341,7 +353,8 @@
           "description": "Long-term battery degradation data provided by the Oxford Battery Intelligence Lab. It contains dynamic urban driving profiles (highly transient current loads) obtained from 740mAh pouch cells, utilized to validate the model's generalization ability under dynamic conditions."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_000",
+      "domain_label_en": "Energy"
     },
     {
       "task_id": "Energy_001",
@@ -389,7 +402,8 @@
           "description": "Describes the parameters of storage units, including bus location, type (e.g., pumped hydro), power capacity, energy capacity, and charge/discharge efficiency. Used to simulate the charging and discharging behavior of storage."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_001",
+      "domain_label_en": "Energy"
     },
     {
       "task_id": "Energy_002",
@@ -437,7 +451,8 @@
           "description": "Code page file specifying the character encoding used in the .dbf attribute file (typically UTF-8 or Latin-1)."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_002",
+      "domain_label_en": "Energy"
     },
     {
       "task_id": "Energy_003",
@@ -455,7 +470,8 @@
           "description": "This compact and small dataset version of the core features of the target literature HEEW contains hourly electricity, heat, cooling load, photovoltaic power generation, greenhouse gas emissions, and seven meteorological data for the entire year of 2014. The data is organized in a hierarchical structure, covering 10 independent buildings (BN001–BN010), one aggregated community (CN01), and the entire area (Total), and is used to replicate the core experiments in the paper such as data cleaning, correlation analysis, and consistency verification of hierarchical aggregation, providing example data support for multi-energy system research and the development of machine learning algorithms."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Energy_003",
+      "domain_label_en": "Energy"
     },
     {
       "task_id": "Information_000",
@@ -479,7 +495,8 @@
           "description": "A specific meme image (\"Swole Doge vs. Cheems\") used in Figure 5 of the paper. It contains embedded text (\"Decoupling Visual Encoding\" vs. \"Single Visual Encoder\") and visual metaphors to evaluate the model's high-level semantic understanding of humor."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_000",
+      "domain_label_en": "Information science"
     },
     {
       "task_id": "Information_001",
@@ -497,7 +514,8 @@
           "description": "Two Demo pictures used in experiment 1"
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_001",
+      "domain_label_en": "Information science"
     },
     {
       "task_id": "Information_002",
@@ -515,7 +533,8 @@
           "description": "The target scientific paper defining the AB-stacked MoTe2/WSe2 moiré system and its Hamiltonian parameters."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_002",
+      "domain_label_en": "Information science"
     },
     {
       "task_id": "Information_003",
@@ -533,7 +552,8 @@
           "description": "NF-UNSW-NB15 is a NetFlow‑based feature dataset where each row represents a single network flow described by 8 to 53 statistical features (e.g., timestamp, duration, bytes, packet rates, inter‑arrival times), extracted from packet headers and stored in CSV format for binary/multi‑class intrusion detection."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Information_003",
+      "domain_label_en": "Information science"
     },
     {
       "task_id": "Life_000",
@@ -581,7 +601,8 @@
           "description": "The comprehensive dataset aggregating experimental results from another batch of final optimization dataset. It serves as the input for evaluation notebooks to analyze the overall optimization trajectory and validate performance."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_000",
+      "domain_label_en": "Life sciences"
     },
     {
       "task_id": "Life_001",
@@ -689,7 +710,8 @@
           "description": "Simplified vaccine composition file listing selected peptides and their counts/weights. Used for recall analysis."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_001",
+      "domain_label_en": "Life sciences"
     },
     {
       "task_id": "Life_002",
@@ -713,7 +735,8 @@
           "description": "Target complex structure from PDB ID 6n40. Used for pairwise structural alignment with 7xg4 to test Foldseek‑Multimer’s alignment capability."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_002",
+      "domain_label_en": "Life sciences"
     },
     {
       "task_id": "Life_003",
@@ -773,7 +796,8 @@
           "description": "Ground truth binary labels (0/1) for each site, derived from GLORI or m6A-Atlas, used as the reference for precision-recall and ROC analysis."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Life_003",
+      "domain_label_en": "Life sciences"
     },
     {
       "task_id": "Material_000",
@@ -803,7 +827,8 @@
           "description": "This unlabeled dataset (1,000 samples) represents candidate materials whose magnetic properties are unknown. The trained classifier predicts the probability of each being an altermagnet. Hidden true labels are stored internally for evaluation, allowing measurement of discovery accuracy. Approximately 50 true positives are embedded based on generation rules."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_000",
+      "domain_label_en": "Materials"
     },
     {
       "task_id": "Material_001",
@@ -821,7 +846,8 @@
           "description": "This dataset is designed for rapid validation of three core AI application workflows in materials science—property prediction, structure generation, and experimental optimization—supporting code prototyping and fundamental algorithm testing."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_001",
+      "domain_label_en": "Materials"
     },
     {
       "task_id": "Material_002",
@@ -839,7 +865,8 @@
           "description": "This dataset contains all parameters and structural information needed to reproduce the performance of the MACE-MP-0 foundation model on three key tests: liquid water structure, adsorption energy scaling relations on transition metal surfaces, and CRBH20 reaction barriers."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_002",
+      "domain_label_en": "Materials"
     },
     {
       "task_id": "Material_003",
@@ -863,7 +890,8 @@
           "description": "Contains molecular structures of vitrimer systems and their MD simulated Tg values used as input for the Gaussian process calibration to generate calibrated Tg predictions."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Material_003",
+      "domain_label_en": "Materials"
     },
     {
       "task_id": "Math_000",
@@ -881,7 +909,8 @@
           "description": "This dataset contains a simulated multi-object video sequence generated with controlled parameters (40 frames, 20 objects, 85% detection rate, 20% occlusion overlap threshold) to evaluate tracking performance under dense occlusion scenarios. It includes ground truth trajectories and detection boxes with confidence scores and occlusion labels, enabling reproducible comparison of SparseTrack and ByteTrack as presented in the paper."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_000",
+      "domain_label_en": "Mathematics"
     },
     {
       "task_id": "Math_001",
@@ -899,7 +928,8 @@
           "description": "A synthetic, ill-conditioned dataset generated for high-dimensional Lasso regression. It contains the design matrix A (1000x2000), response vector b, and ground truth sparse coefficients x_true, stored in .npy format to verify algorithm convergence."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_001",
+      "domain_label_en": "Mathematics"
     },
     {
       "task_id": "Math_002",
@@ -959,7 +989,8 @@
           "description": "Dataset of warehouse-style 2D grid maps (25x25) with organized shelf layouts, containing task configurations specifically designed to simulate automated logistics and retrieval scenarios."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_002",
+      "domain_label_en": "Mathematics"
     },
     {
       "task_id": "Math_003",
@@ -977,7 +1008,8 @@
           "description": "A curated benchmark of 30 geometry problems from the International Mathematical Olympiad (since 2000), used for final evaluation."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Math_003",
+      "domain_label_en": "Mathematics"
     },
     {
       "task_id": "Neuroscience_000",
@@ -1007,7 +1039,8 @@
           "description": "Reference output table provided with the sample project, retained as auxiliary material for contextual comparison with reproduced classifier outputs."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_000",
+      "domain_label_en": "Neuroscience"
     },
     {
       "task_id": "Neuroscience_001",
@@ -1025,7 +1058,8 @@
           "description": "the complete ensemble of 50 pre-trained deep mechanistic network (DMN) models, along with all necessary configuration files, synapse count matrices, and cell‑type annotations. These models are constrained by the fly connectome and optimized for optic flow estimation, allowing users to directly simulate neural responses, reproduce key analyses from the paper, and generate experimentally testable hypotheses without retraining."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_001",
+      "domain_label_en": "Neuroscience"
     },
     {
       "task_id": "Neuroscience_002",
@@ -1049,7 +1083,8 @@
           "description": "Contains approximately 8400 samples (70% of total). Each sample has 20 feature columns (0‑19) representing morphology, intensity, and embedding modalities, a binary label (1 for same neuron, 0 otherwise), and a degradation type (Misalignment, Missing Sections, Mixed, or Average). The data is stratified by degradation to ensure balanced representation."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_002",
+      "domain_label_en": "Neuroscience"
     },
     {
       "task_id": "Neuroscience_003",
@@ -1067,7 +1102,8 @@
           "description": "A preprocessed single-cell dataset (protein iterative indirect immunofluorescence imaging) showcasing cellular state transitions in a retina-related context that is compatible with neuroscience-adjacent analysis."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Neuroscience_003",
+      "domain_label_en": "Neuroscience"
     },
     {
       "task_id": "Physics_000",
@@ -1085,7 +1121,8 @@
           "description": "This dataset contains complete parameters and result data for reproducing all simulation experiments from the paper \"General theory for packing icosahedral shells into multi-component aggregates\", enabling full reproduction of theoretical calculations, experimental verification, and dynamic growth simulations in any computational environment."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_000"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_000",
+      "domain_label_en": "Physics"
     },
     {
       "task_id": "Physics_001",
@@ -1103,7 +1140,8 @@
           "description": "This dataset fully contains all simulated data required to reproduce the three core experiments of the target study, covering carrier density dependence, temperature dependence, and current dependence. It can be directly used to independently verify key conclusions such as quantum geometry-dominated enhancement of superfluid stiffness, power-law behavior of anisotropic gaps, and quadratic current relationships."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_001"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_001",
+      "domain_label_en": "Physics"
     },
     {
       "task_id": "Physics_002",
@@ -1127,7 +1165,8 @@
           "description": "The corresponding subset of ideal distribution information is saved per circuit instance as amplitudes/N40_verification/N40_d*_XEB/*_amplitudes.json. Each JSON file provides the ideal amplitudes or ideal probabilities for a set of bitstrings (unified as ideal_probs in your code), which are used to match with the measured counts and compute XEB (the number of matched keys is typically 20 in your reproduction)."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_002"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_002",
+      "domain_label_en": "Physics"
     },
     {
       "task_id": "Physics_003",
@@ -1157,7 +1196,8 @@
           "description": "Tabular data containing the measured intensity of the replica band for each pump polarization angle (θp)."
         }
       ],
-      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_003"
+      "source_url": "https://github.com/InternScience/ResearchClawBench/tree/main/tasks/Physics_003",
+      "domain_label_en": "Physics"
     }
   ]
 }

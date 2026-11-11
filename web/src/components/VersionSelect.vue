@@ -24,17 +24,20 @@
 import { computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getVersions } from "../data/client";
+import { useI18n } from "../i18n/useI18n";
 
 const props = defineProps({
   bench: { type: String, required: true },
   version: { type: String, required: true },
 });
 
-const statusText = { current: "当前", history: "历史", planned: "规划中" };
+
 const open = ref(false);
 const route = useRoute();
 const router = useRouter();
 const versions = getVersions(props.bench);
+const { t } = useI18n();
+const statusText = computed(() => ({ current: t("当前"), history: t("历史"), planned: t("规划中") }));
 const current = computed(() => versions.find((item) => item.id === props.version));
 
 function choose(id) {

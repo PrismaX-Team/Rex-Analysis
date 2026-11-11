@@ -2,7 +2,7 @@
   <div>
     <div class="filters">
       <button type="button" :aria-pressed="domain === 'all'" @click="$emit('update:domain', 'all')">
-        全部<small>{{ total }}</small>
+        {{ t("全部") }}<small>{{ total }}</small>
       </button>
       <button
         v-for="item in domains"
@@ -23,22 +23,25 @@
       >
         <div class="card-top">
           <span class="id">{{ task.task_id }}</span>
-          <span class="card-dom"><i class="dot"></i>{{ task.domain_label }}</span>
+          <span class="card-dom"><i class="dot"></i>{{ en ? task.domain_label_en || task.domain_label : task.domain_label }}</span>
         </div>
         <h3>{{ headline(task) }}</h3>
         <p>{{ task.summary }}</p>
         <div class="meta">
-          <span class="pill">{{ task.data.length }} 个数据文件</span>
-          <span class="go">查看题面 →</span>
+          <span class="pill">{{ task.data.length }} {{ t("个数据文件") }}</span>
+          <span class="go">{{ t("查看题面 →") }}</span>
         </div>
       </router-link>
     </div>
-    <div v-else class="empty">这一版还没有公开任务。</div>
+    <div v-else class="empty">{{ t("这一版还没有公开任务。") }}</div>
   </div>
 </template>
 
 <script setup>
 import { getTaskMeta } from "../data/client";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
 
 const props = defineProps({
   bench: { type: String, required: true },
@@ -50,9 +53,9 @@ const props = defineProps({
 });
 defineEmits(["update:domain"]);
 
-const { domains: metaDomains, labels } = getTaskMeta(props.bench, props.version);
+const { domains: metaDomains, labels, labelsEn } = getTaskMeta(props.bench, props.version);
 const colors = Object.fromEntries(metaDomains.map((d) => [d.id, d.color]));
 const colorOf = (id) => colors[id] || "var(--accent)";
 // The public title is a long English sentence; prefer the short curated name when there is one.
-const headline = (task) => labels[task.task_id] || task.title;
+const headline = (task) => (en.value ? labelsEn[task.task_id] || labels[task.task_id] : labels[task.task_id]) || task.title;
 </script>

@@ -9,10 +9,11 @@
       </router-link>
       <nav class="hub-nav" aria-label="主导航">
         <a href="#benches" @click.prevent="jump('benches')">Benchmarks</a>
-        <router-link to="/leaderboard">排行榜</router-link>
-        <router-link to="/about">评测说明</router-link>
-        <a :href="REX_URL" target="_blank" rel="noreferrer">提交科学问题 ↗</a>
+        <router-link to="/leaderboard">{{ t("排行榜") }}</router-link>
+        <router-link to="/about">{{ t("评测说明") }}</router-link>
+        <a :href="REX_URL" target="_blank" rel="noreferrer">{{ t("提交科学问题 ↗") }}</a>
       </nav>
+      <LocaleToggle />
       <ThemeToggle class="hub-theme" />
     </header>
 
@@ -20,30 +21,30 @@
       <section class="hub-hero">
         <a class="hero-pill" href="#boards" @click.prevent="jump('boards')">
           <span class="pill-tag">{{ heroTag }}</span>
-          <span>{{ newest.name }} 已上线</span>
+          <span>{{ pick(newest.name, newest.name_en) }} {{ en ? "is live" : "已上线" }}</span>
           <span class="pill-arrow" aria-hidden="true">→</span>
         </a>
         <h1 class="hub-title">Rex-<span class="grad">Analysis</span></h1>
-        <p class="hub-lede">面向科研智能体的评测平台。真实研究任务，独立完成，公开评分。</p>
+        <p class="hub-lede">{{ t("面向科研智能体的评测平台。真实研究任务，独立完成，公开评分。") }}</p>
         <div class="hero-go">
-          <a class="go-solid" href="#boards" @click.prevent="jump('boards')">浏览评测榜单</a>
-          <a class="go-ghost" href="#benches" @click.prevent="jump('benches')">查看全部 Benchmarks</a>
+          <a class="go-solid" href="#boards" @click.prevent="jump('boards')">{{ t("浏览评测榜单") }}</a>
+          <a class="go-ghost" href="#benches" @click.prevent="jump('benches')">{{ t("查看全部 Benchmarks") }}</a>
         </div>
-        <a class="scroll-cue" href="#boards" @click.prevent="jump('boards')" aria-label="向下浏览">
-          <span>向下浏览</span><i aria-hidden="true"></i>
+        <a class="scroll-cue" href="#boards" @click.prevent="jump('boards')" :aria-label="t('向下浏览')">
+          <span>{{ t("向下浏览") }}</span><i aria-hidden="true"></i>
         </a>
       </section>
 
       <!-- Rotating glance at each bench's leaderboard: its own section under the hero. -->
       <section id="boards" class="hub-section">
         <header class="section-head">
-          <h2>评测榜单</h2>
-          <p>每个 bench 一张榜，自动轮播，鼠标停留时暂停。</p>
+          <h2>{{ t("评测榜单") }}</h2>
+          <p>{{ t("每个 bench 一张榜，自动轮播，鼠标停留时暂停。") }}</p>
         </header>
         <div
           class="hero-board"
           aria-roledescription="carousel"
-          aria-label="排行榜轮播"
+          :aria-label="t('排行榜轮播')"
           @pointerenter="paused = true"
           @pointerleave="paused = false"
           @focusin="paused = true"
@@ -61,20 +62,20 @@
                 <span class="hb-k">{{ slide.live ? "LIVE" : "COMING SOON" }} · {{ slide.bench }}</span>
                 <h3 class="hb-name">{{ slide.name }}</h3>
                 <p class="hb-desc">{{ slide.desc }}</p>
-                <p class="hb-foot">{{ slide.live ? slide.foot : "榜单将在 bench 上线后出现" }}</p>
-                <router-link v-if="slide.live" class="hb-more" :to="slide.to" :tabindex="i === index ? 0 : -1">完整榜单 →</router-link>
+                <p class="hb-foot">{{ slide.live ? slide.foot : t("榜单将在 bench 上线后出现") }}</p>
+                <router-link v-if="slide.live" class="hb-more" :to="slide.to" :tabindex="i === index ? 0 : -1">{{ t("完整榜单 →") }}</router-link>
               </div>
               <div v-if="slide.live && !slide.rows.length" class="hb-pending">
                 <strong>{{ slide.tasks }}</strong>
-                <span>道任务已公开</span>
-                <p>成绩公开后，这里会显示前五名。</p>
-                <router-link :to="`${slide.base}/tasks`" :tabindex="i === index ? 0 : -1">浏览任务 →</router-link>
+                <span>{{ t("道任务已公开") }}</span>
+                <p>{{ t("成绩公开后，这里会显示前五名。") }}</p>
+                <router-link :to="`${slide.base}/tasks`" :tabindex="i === index ? 0 : -1">{{ t("浏览任务 →") }}</router-link>
               </div>
               <ol v-else-if="slide.live" class="hb-rows">
                 <li v-for="row in slide.rows" :key="row.run_id">
                   <router-link :to="`${slide.base}/runs/${row.run_id}`" :tabindex="i === index ? 0 : -1">
                     <span class="hb-rank">{{ row.rank }}</span>
-                    <span class="hb-sys">{{ row.system }}<small>{{ row.model || `${row.task_count} / 40 题` }}</small></span>
+                    <span class="hb-sys">{{ row.system }}<small>{{ row.model || (en ? `${row.task_count} / ${fullTaskCount} tasks` : `${row.task_count} / ${fullTaskCount} 题`) }}</small></span>
                     <span class="hb-bar" aria-hidden="true"><i :style="{ width: `${(row.score / slide.max) * 100}%` }"></i></span>
                     <span class="hb-score">{{ row.score.toFixed(2) }}</span>
                   </router-link>
@@ -85,8 +86,8 @@
               </ol>
             </section>
           </div>
-          <nav v-if="slides.length > 1" class="hb-nav" aria-label="切换榜单">
-            <button type="button" class="hb-arrow" aria-label="上一个" @click="go(index - 1)">‹</button>
+          <nav v-if="slides.length > 1" class="hb-nav" :aria-label="t('切换榜单')">
+            <button type="button" class="hb-arrow" :aria-label="t('上一个')" @click="go(index - 1)">‹</button>
             <button
               v-for="(slide, i) in slides"
               :key="`dot-${slide.key}`"
@@ -97,7 +98,7 @@
               :aria-current="i === index"
               @click="go(i)"
             ><i :style="{ animationDuration: `${INTERVAL}ms` }"></i></button>
-            <button type="button" class="hb-arrow" aria-label="下一个" @click="go(index + 1)">›</button>
+            <button type="button" class="hb-arrow" :aria-label="t('下一个')" @click="go(index + 1)">›</button>
           </nav>
         </div>
       </section>
@@ -105,7 +106,7 @@
       <section id="benches" class="hub-section">
         <header class="section-head">
           <h2>Benchmarks</h2>
-          <p>{{ benches.length }} 个已上线，更多 bench 正在筹备。点卡片进入该 bench 的榜、题和说明。</p>
+          <p>{{ benches.length }}{{ en ? " live; more benches in preparation. Open a card for its board, tasks and notes." : " 个已上线，更多 bench 正在筹备。点卡片进入该 bench 的榜、题和说明。" }}</p>
         </header>
 
         <div class="hub-grid">
@@ -121,17 +122,17 @@
               <span class="bench-mono">{{ bench.short }}</span>
             </header>
             <h3 class="bench-name">{{ bench.name }}</h3>
-            <p class="bench-tagline">{{ bench.tagline }}</p>
-            <p class="bench-summary">{{ bench.summary }}</p>
+            <p class="bench-tagline">{{ pick(bench.tagline, bench.tagline_en) }}</p>
+            <p class="bench-summary">{{ pick(bench.summary, bench.summary_en) }}</p>
             <footer class="bench-foot">
-              <span class="bench-chip">{{ bench.task_type }}</span>
-              <span class="bench-chip ghost">{{ bench.scoring }}</span>
-              <span class="bench-go">进入 →</span>
+              <span class="bench-chip">{{ pick(bench.task_type, bench.task_type_en) }}</span>
+              <span class="bench-chip ghost">{{ pick(bench.scoring, bench.scoring_en) }}</span>
+              <span class="bench-go">{{ t("进入 →") }}</span>
             </footer>
           </router-link>
 
           <!-- Reserved slots for benches still to come. -->
-          <div v-for="n in slots" :key="`slot-${n}`" class="bench slot" aria-label="即将上线的 bench">
+          <div v-for="n in slots" :key="`slot-${n}`" class="bench slot" :aria-label="t('即将上线的 bench')">
             <header class="bench-head">
               <span class="bench-tag">COMING SOON</span>
               <span class="bench-mono">#{{ String(benches.length + n).padStart(2, "0") }}</span>
@@ -142,31 +143,31 @@
               <span class="slot-bar w90"></span>
               <span class="slot-bar w60"></span>
             </div>
-            <p class="slot-text">新的 bench 筹备中</p>
+            <p class="slot-text">{{ t("新的 bench 筹备中") }}</p>
           </div>
         </div>
       </section>
 
       <section id="rex" class="hub-section">
         <header class="section-head">
-          <h2>关于 ReX</h2>
-          <p>ReX 科学共研计划：把真实的科研难题交给模型和智能体，先和提出者对齐目标，再攻关、再验证。</p>
+          <h2>{{ t("关于 ReX") }}</h2>
+          <p>{{ t("ReX 科学共研计划：把真实的科研难题交给模型和智能体，先和提出者对齐目标，再攻关、再验证。") }}</p>
         </header>
         <div class="rex">
           <div class="rex-intro">
-            <span class="rex-k">ReX 科学共研计划 · 上海人工智能实验室</span>
+            <span class="rex-k">{{ t("ReX 科学共研计划 · 上海人工智能实验室") }}</span>
             <h3 class="rex-name"><span class="grad">Re</span>X</h3>
             <p class="rex-word">
-              <b>Re</b> 是 Research，也是 Recursive：求解、验证、反馈，循环往复。
-              <b>X</b> 是任意一个科学任务。
+              <b>Re</b> {{ t("是 Research，也是 Recursive：求解、验证、反馈，循环往复。") }}
+              <b>X</b> {{ t("是任意一个科学任务。") }}
             </p>
             <p class="rex-desc">
-              研究者提交科学问题，书生·端砚调用基础模型、科学智能体和算力去攻关。每次合作只盯一个可独立验证的阶段目标，
-              开工前先约定问题、可用的数据和条件，以及怎样算成功。
+              {{ t("研究者提交科学问题，书生·端砚调用基础模型、科学智能体和算力去攻关。每次合作只盯一个可独立验证的阶段目标，") }}
+              {{ t("开工前先约定问题、可用的数据和条件，以及怎样算成功。") }}
             </p>
             <div class="rex-go">
-              <a class="rex-btn" :href="REX_URL" target="_blank" rel="noreferrer">提交科学问题 ↗</a>
-              <span class="rex-note">中英文均可，方案不完整也能先交</span>
+              <a class="rex-btn" :href="REX_URL" target="_blank" rel="noreferrer">{{ t("提交科学问题") }} ↗</a>
+              <span class="rex-note">{{ t("中英文均可，方案不完整也能先交") }}</span>
             </div>
           </div>
 
@@ -175,13 +176,13 @@
               <li v-for="lv in levels" :key="lv.id" :class="lv.id">
                 <span class="lv-id">{{ lv.id }}</span>
                 <div>
-                  <p class="lv-name">{{ lv.name }}<small>{{ lv.zone }}</small></p>
-                  <p class="lv-text">{{ lv.text }}</p>
+                  <p class="lv-name">{{ t(lv.name) }}<small>{{ t(lv.zone) }}</small></p>
+                  <p class="lv-text">{{ t(lv.text) }}</p>
                 </div>
               </li>
             </ol>
             <div class="rex-flow-wrap">
-              <ol class="rex-flow" role="tablist" aria-label="合作流程">
+              <ol class="rex-flow" role="tablist" :aria-label="t('合作流程')">
                 <li v-for="(st, i) in flow" :key="st.title">
                   <button
                     type="button"
@@ -189,10 +190,10 @@
                     :aria-selected="step === i"
                     :class="{ on: step === i, done: i < step }"
                     @click="step = i"
-                  ><span>{{ String(i + 1).padStart(2, "0") }}</span>{{ st.title }}</button>
+                  ><span>{{ String(i + 1).padStart(2, "0") }}</span>{{ t(st.title) }}</button>
                 </li>
               </ol>
-              <p class="rex-step" role="tabpanel">{{ flow[step].text }}</p>
+              <p class="rex-step" role="tabpanel">{{ t(flow[step].text) }}</p>
             </div>
           </div>
         </div>
@@ -200,24 +201,24 @@
 
       <section id="overall" class="hub-section">
         <header class="section-head">
-          <h2>Leaderboard</h2>
-          <p>每个 bench 的模型前五名。分数只在同一个 bench 内可比。</p>
+          <h2>{{ t("Leaderboard") }}</h2>
+          <p>{{ t("每个 bench 的模型前五名。分数只在同一个 bench 内可比。") }}</p>
         </header>
         <OverallBoard />
       </section>
 
       <section id="fields" class="hub-section">
         <header class="section-head">
-          <h2>覆盖领域</h2>
-          <p>所有数据集的学科版图。</p>
+          <h2>{{ t("覆盖领域") }}</h2>
+          <p>{{ t("所有数据集的学科版图。") }}</p>
         </header>
         <FieldCoverage />
       </section>
 
       <section id="how" class="hub-section">
         <header class="section-head">
-          <h2>如何参与</h2>
-          <p>不论你是来看结果，还是来提交自己的智能体，都从这三步开始。</p>
+          <h2>{{ t("如何参与") }}</h2>
+          <p>{{ t("不论你是来看结果，还是来提交自己的智能体，都从这三步开始。") }}</p>
         </header>
         <ol class="how">
           <li v-for="step in how" :key="step.n">
@@ -227,9 +228,9 @@
               v-bind="step.href ? { href: step.href, target: '_blank', rel: 'noreferrer' } : { to: step.to }"
             >
               <span class="how-n">{{ step.n }}</span>
-              <h3>{{ step.title }}</h3>
-              <p>{{ step.text }}</p>
-              <span class="how-go">{{ step.go }}</span>
+              <h3>{{ t(step.title) }}</h3>
+              <p>{{ t(step.text) }}</p>
+              <span class="how-go">{{ t(step.go) }}</span>
             </component>
           </li>
         </ol>
@@ -237,8 +238,19 @@
     </main>
 
     <footer class="hub-foot">
-      <span>各 bench 的分数不可横比，评分规则见各自的说明页。</span>
-      <a href="mailto:xu_wanghan@sjtu.edu.cn">联系我们</a>
+      <div class="foot-left">
+        <nav class="foot-nav" aria-label="页脚导航">
+          <router-link to="/">{{ en.value ? "Home" : "首页" }}</router-link>
+          <router-link to="/leaderboard">{{ t("排行榜") }}</router-link>
+          <router-link to="/about">{{ t("评测说明") }}</router-link>
+          <a :href="REX_URL" target="_blank" rel="noreferrer">{{ en.value ? "Contribute" : "参与共建" }}</a>
+        </nav>
+        <p class="foot-led">{{ en.value ? "Led by " : "由 " }}<a href="https://www.shlab.org.cn/" target="_blank" rel="noreferrer">{{ en.value ? "Shanghai Artificial Intelligence Laboratory" : "上海人工智能实验室" }}</a>{{ en.value ? "." : "主导。" }}</p>
+        <p class="foot-contact">{{ en.value ? "Contact: " : "联系：" }}<a href="mailto:xiaojuncheng@pjlab.org.cn">xiaojuncheng@pjlab.org.cn</a></p>
+      </div>
+      <a class="foot-logo-wrap" href="https://www.shlab.org.cn/" target="_blank" rel="noreferrer" aria-label="Shanghai Artificial Intelligence Laboratory">
+        <img class="foot-logo" :src="`${base}committee/logo.webp`" alt="Shanghai Artificial Intelligence Laboratory" />
+      </a>
     </footer>
   </div>
 </template>
@@ -250,9 +262,15 @@ import ThemeToggle from "../components/ThemeToggle.vue";
 import OverallBoard from "../components/OverallBoard.vue";
 import FieldCoverage from "../components/FieldCoverage.vue";
 import { useTheme } from "../theme/useTheme";
+import LocaleToggle from "../components/LocaleToggle.vue";
+import { useI18n } from "../i18n/useI18n";
 import { getBenches, getBenchSlots, getCarouselSize, getLeaderboard, getTasks } from "../data/client";
 
+const base = import.meta.env.BASE_URL;
 const { theme } = useTheme();
+const { t, en } = useI18n();
+const pick = (zh, enText) => (en.value && enText ? enText : zh);
+const fullTaskCount = 40;
 
 // Condensed from the ReX page: three task levels and the four-step collaboration.
 const levels = [
@@ -295,14 +313,18 @@ const slides = computed(() => {
       key: bench.id,
       live: true,
       bench: bench.short,
-      name: bench.name,
-      desc: bench.summary,
+      name: pick(bench.name, bench.name_en),
+      desc: pick(bench.summary, bench.summary_en),
       max: Math.max(...rows.slice(0, 5).map((r) => r.score), 1),
       color: accentOf(bench),
       base,
       to: `${base}/leaderboard`,
       rows: rows.slice(0, 5),
-      foot: board.rows.length ? `${bench.scoring} · 共 ${board.rows.length} 次提交` : `${bench.scoring}`,
+      foot: board.rows.length
+        ? en.value
+          ? `${pick(bench.scoring, bench.scoring_en)} · ${board.rows.length} submissions`
+          : `${bench.scoring} · 共 ${board.rows.length} 次提交`
+        : pick(bench.scoring, bench.scoring_en),
       tasks: getTasks(bench.id, version).tasks.length,
     };
   });
@@ -311,8 +333,8 @@ const slides = computed(() => {
     key: `slot-${k}`,
     live: false,
     bench: `#${String(shown.length + k + 1).padStart(2, "0")}`,
-    name: "新的 bench 筹备中",
-    desc: "新的研究任务包正在准备。上线后，这里会显示它的前五名。",
+    name: t("新的 bench 筹备中"),
+    desc: t("新的研究任务包正在准备。上线后，这里会显示它的前五名。"),
     color: "var(--muted)",
   }));
   return [...shown, ...reserved].slice(0, size);

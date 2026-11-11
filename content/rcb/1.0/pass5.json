@@ -4,6 +4,7 @@
   "source": "InternScience/ResearchClawBench-Home data/pass5_leaderboard.json",
   "generated_at": "2026-06-29",
   "note": "每题跑 5 次取最高分；失败或未评分的尝试按 0 计。只覆盖部分独立大模型。",
+  "note_en": "Best of five runs per task; failed or unscored attempts count as zero. Covers only some standalone models.",
   "domains": [
     "Astronomy",
     "Chemistry",

@@ -4,18 +4,18 @@
       <thead>
         <tr>
           <th class="c-rank">#</th>
-          <th class="c-sys">模型</th>
+          <th class="c-sys">{{ t("模型") }}</th>
           <th v-if="hasHarness" class="c-harness">Harness</th>
-          <th class="c-score" :aria-sort="ariaSort('score')"><button type="button" class="sort" @click="sortBy('score')">均分<i :class="arrow('score')"></i></button></th>
-          <th v-for="d in domains" :key="d" class="c-dom" :title="domainLabels[d] || d">{{ (domainLabels[d] || d).slice(0, 2) }}</th>
-          <th class="c-new" title="分数达到 50（原论文证据水平）的题数">New</th>
-          <th class="c-meta">题数</th>
+          <th class="c-score" :aria-sort="ariaSort('score')"><button type="button" class="sort" @click="sortBy('score')">{{ t("均分") }}<i :class="arrow('score')"></i></button></th>
+          <th v-for="d in domains" :key="d" class="c-dom" :title="domLabel(d)">{{ domLabel(d).slice(0, 2) }}</th>
+          <th class="c-new" :title="t('分数达到 50（原论文证据水平）的题数')">New</th>
+          <th class="c-meta">{{ t("题数") }}</th>
           <template v-if="!pass5">
-            <th class="c-meta" :aria-sort="ariaSort('cost_usd')"><button type="button" class="sort" @click="sortBy('cost_usd')">单题成本<i :class="arrow('cost_usd')"></i></button></th>
-            <th class="c-meta" :aria-sort="ariaSort('duration_seconds')"><button type="button" class="sort" @click="sortBy('duration_seconds')">单题用时<i :class="arrow('duration_seconds')"></i></button></th>
-            <th class="c-src">来源</th>
+            <th class="c-meta" :aria-sort="ariaSort('cost_usd')"><button type="button" class="sort" @click="sortBy('cost_usd')">{{ t("单题成本") }}<i :class="arrow('cost_usd')"></i></button></th>
+            <th class="c-meta" :aria-sort="ariaSort('duration_seconds')"><button type="button" class="sort" @click="sortBy('duration_seconds')">{{ t("单题用时") }}<i :class="arrow('duration_seconds')"></i></button></th>
+            <th class="c-src">{{ t("来源") }}</th>
           </template>
-          <th v-else class="c-meta c-spread" title="五次尝试的单题平均分 ± 标准差">单次均值 ± σ</th>
+          <th v-else class="c-meta c-spread" :title="t('五次尝试的单题平均分 ± 标准差')">{{ t("单次均值 ± σ") }}</th>
         </tr>
       </thead>
       <tbody>
@@ -45,7 +45,7 @@
             <template v-if="!pass5">
               <td class="c-meta">{{ cost(row.cost_usd) }}</td>
               <td class="c-meta">{{ dur(row.duration_seconds) }}</td>
-              <td class="c-src"><span class="src" :class="row.source">{{ row.source === "community" ? "社区" : "内测" }}</span></td>
+              <td class="c-src"><span class="src" :class="row.source">{{ row.source === "community" ? t("社区") : t("内测") }}</span></td>
             </template>
             <td v-else class="c-meta c-spread">{{ row.attempt_mean.toFixed(1) }} ± {{ row.attempt_std.toFixed(1) }}</td>
           </tr>
@@ -59,7 +59,7 @@
               </p>
               <div class="strip">
                 <div v-for="d in domains" :key="d" class="strip-dom">
-                  <span class="strip-name">{{ domainLabels[d] || d }}</span>
+                  <span class="strip-name">{{ domLabel(d) }}</span>
                   <span class="strip-cells">
                     <router-link
                       v-for="t in tasksOf(row, d)"
@@ -74,10 +74,10 @@
               </div>
               <div class="strip-foot">
                 <span class="strip-keys">
-                  <span><i class="dot-top"></i>本题全榜最高</span>
-                  <span v-if="pass5">悬停小格看五次尝试的分数、均值 ± 标准差和最低 / 最高</span>
+                  <span><i class="dot-top"></i>{{ t("本题全榜最高") }}</span>
+                  <span v-if="pass5">{{ t("悬停小格看五次尝试的分数、均值 ± 标准差和最低 / 最高") }}</span>
                 </span>
-                <button v-if="!pass5" type="button" @click.stop="$emit('open', row.run_id)">查看这次提交 →</button>
+                <button v-if="!pass5" type="button" @click.stop="$emit('open', row.run_id)">{{ t("查看这次提交 →") }}</button>
               </div>
             </td>
           </tr>
@@ -85,25 +85,30 @@
       </tbody>
     </table>
   </div>
-  <div v-if="rows.length" class="heat-legend" aria-label="颜色图例">
+  <div v-if="rows.length" class="heat-legend" :aria-label="t('颜色图例')">
     <span>Re-Discovery</span>
     <i class="h0">&lt;10</i><i class="h1">10</i><i class="h2">20</i><i class="h3">30</i><i class="h4">40</i>
     <span class="lg-new">New-Discovery</span>
     <i class="hn">50+</i>
-    <i class="none">未评分</i>
-    <span v-if="pass5" class="lg-note">Pass@5 学科格：上为五次取最好的均分，下为全部尝试的均值 ± 标准差</span>
+    <i class="none">{{ t("未评分") }}</i>
+    <span v-if="pass5" class="lg-note">{{ t("Pass@5 学科格：上为五次取最好的均分，下为全部尝试的均值 ± 标准差") }}</span>
   </div>
-  <div v-else class="empty">这一版还没有公开提交。</div>
+  <div v-else class="empty">{{ t("这一版还没有公开提交。") }}</div>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
 import { getRun } from "../data/client";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
+const domLabel = (id) => (en.value ? props.domainLabelsEn?.[id] || props.domainLabels?.[id] : props.domainLabels?.[id]) || id;
 
 const props = defineProps({
   rows: { type: Array, required: true },
   domains: { type: Array, default: () => [] },
   domainLabels: { type: Object, default: () => ({}) },
+  domainLabelsEn: { type: Object, default: () => ({}) },
   frontier: { type: Object, default: () => ({}) },
   bench: { type: String, default: "" },
   version: { type: String, default: "" },

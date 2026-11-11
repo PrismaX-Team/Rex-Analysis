@@ -5,7 +5,8 @@
       "label": "1.0",
       "status": "current",
       "score_name": "RADS",
-      "score_note": "0–100。50 以下是 Re-Discovery（复现原论文），50 以上是 New-Discovery（证据超过原论文），70 以上明显超过。定性 checklist。"
+      "score_note": "0–100。50 以下是 Re-Discovery（复现原论文），50 以上是 New-Discovery（证据超过原论文），70 以上明显超过。定性 checklist。",
+      "score_note_en": "0–100. Below 50 is rediscovery (matching the paper); above 50 is new discovery (evidence beyond it), and above 70 clearly so. Qualitative checklist."
     }
   ]
 }

@@ -1,23 +1,23 @@
 <template>
   <TopBar :bench="benchId" :version="version" />
   <main class="shell page">
-    <p class="kicker">{{ bench?.name }} · Leaderboard</p>
-    <h1>排行榜</h1>
-    <p class="lede">{{ bench?.board_lede || "按均分排名。点一行展开分题成绩。" }}</p>
+    <p class="kicker">{{ benchName }} · Leaderboard</p>
+    <h1>{{ t("排行榜") }}</h1>
+    <p class="lede">{{ en ? bench?.board_lede_en || bench?.board_lede : bench?.board_lede || t("按均分排名。点一行展开分题成绩。") }}</p>
     <ScoreNote :bench="benchId" :version="version" />
 
-    <div v-if="pass5Board" class="lb-mode" role="tablist" aria-label="计分方式">
+    <div v-if="pass5Board" class="lb-mode" role="tablist" :aria-label="t('计分方式')">
       <button type="button" role="tab" :aria-selected="mode === 'pass1'" @click="mode = 'pass1'">
-        Pass@1<small>每题一次</small>
+        Pass@1<small>{{ t("每题一次") }}</small>
       </button>
       <button type="button" role="tab" :aria-selected="mode === 'pass5'" @click="mode = 'pass5'">
-        Pass@5<small>五次取最好</small>
+        Pass@5<small>{{ t("五次取最好") }}</small>
       </button>
     </div>
 
 
     <template v-if="mode === 'pass5' && pass5Board">
-      <p class="lb-group-note">{{ pass5Board.note }}</p>
+      <p class="lb-group-note">{{ en ? pass5Board.note_en || pass5Board.note : pass5Board.note }}</p>
       <LeaderboardTable
         :key="'p5'"
         :bench="benchId"
@@ -25,6 +25,7 @@
         :rows="pass5Board.rows"
         :domains="pass5Board.domains || []"
         :domain-labels="domainLabels"
+        :domain-labels-en="domainLabelsEn"
         :frontier="pass5Board.frontier || {}"
         :version="version"
       />
@@ -41,11 +42,11 @@
           :aria-selected="group === g.id"
           @click="group = g.id"
         >
-          {{ g.label }}<small>{{ g.en }} · {{ countOf(g.id) }}</small>
+          {{ en ? g.label_en || g.label : g.label }}<small>{{ en ? countOf(g.id) : `${g.en} · ${countOf(g.id)}` }}</small>
         </button>
       </div>
       <p v-if="groupNote" class="lb-group-note">{{ groupNote }}</p>
-      <p class="lb-meta">{{ rows.length }} 个{{ groupNoun }} · 数据更新于 {{ updatedText }}</p>
+      <p class="lb-meta">{{ en ? `${rows.length} ${groupNoun} · data updated ${updatedText}` : `${rows.length} 个${groupNoun} · 数据更新于 ${updatedText}` }}</p>
 
       <div class="podium">
         <router-link
@@ -57,9 +58,9 @@
         >
           <span class="podium-rank">#{{ row.rank }}</span>
           <span class="podium-sys">{{ row.system }}</span>
-          <span class="podium-model">{{ row.model || `${row.task_count} / ${fullCount} 题` }}</span>
+          <span class="podium-model">{{ row.model || (en ? `${row.task_count} / ${fullCount} tasks` : `${row.task_count} / ${fullCount} 题`) }}</span>
           <span class="podium-score">{{ row.score.toFixed(2) }}</span>
-          <span v-if="row.new_count" class="podium-new" :title="`${row.new_count} 道题越过 50 分`">New-Discovery × {{ row.new_count }}</span>
+          <span v-if="row.new_count" class="podium-new" :title="en ? `${row.new_count} tasks above 50` : `${row.new_count} 道题越过 50 分`">New-Discovery × {{ row.new_count }}</span>
           <span class="podium-bar"><i :style="{ width: `${(row.score / maxScore) * 100}%` }"></i></span>
         </router-link>
       </div>
@@ -68,6 +69,7 @@
         :rows="rows"
         :domains="board.domains || []"
         :domain-labels="domainLabels"
+        :domain-labels-en="domainLabelsEn"
         :frontier="board.frontier || {}"
         :bench="benchId"
         :version="version"
@@ -75,11 +77,11 @@
         @open="openRun"
       />
       <CostChart :rows="rows" :label-of="labelOf" />
-      <p v-if="board.note" class="lb-foot">{{ board.note }} 数据来源：{{ board.source }}</p>
+      <p v-if="board.note" class="lb-foot">{{ en ? board.note_en || board.note : board.note }} {{ en ? "Source" : "数据来源" }}：{{ board.source }}</p>
     </template>
     <div v-else class="empty board-empty">
-      <p>{{ bench?.board_empty || "这一版还没有公开提交。" }}</p>
-      <router-link :to="`${base}/tasks`">先看任务 →</router-link>
+      <p>{{ en ? bench?.board_empty_en || bench?.board_empty : bench?.board_empty || t("这一版还没有公开提交。") }}</p>
+      <router-link :to="`${base}/tasks`">{{ t("先看任务 →") }}</router-link>
     </div>
   </main>
 </template>
@@ -93,9 +95,13 @@ import LeaderboardTable from "../components/LeaderboardTable.vue";
 import CostChart from "../components/CostChart.vue";
 import { getLeaderboard, getPass5, getTasks } from "../data/client";
 import { useBench } from "../data/useBench";
+import { useI18n } from "../i18n/useI18n";
+
+const { t, en } = useI18n();
 
 const router = useRouter();
 const { route, benchId, version, bench, base } = useBench();
+const benchName = computed(() => (bench.value ? (en.value ? bench.value.name_en || bench.value.name : bench.value.name) : ""));
 const board = computed(() => getLeaderboard(benchId.value, version.value));
 
 const pass5Board = computed(() => getPass5(benchId.value, version.value));
@@ -111,7 +117,7 @@ watch(() => route.query.group, () => { group.value = pickGroup(); });
 const countOf = (id) => board.value.rows.filter((r) => (r.group || "all") === id).length;
 const rows = computed(() => board.value.rows.filter((r) => (r.group || "all") === group.value));
 const currentGroup = computed(() => groups.value.find((g) => g.id === group.value));
-const groupNoun = computed(() => (group.value === "agent" ? "智能体" : group.value === "llm" ? "模型" : "提交"));
+const groupNoun = computed(() => (group.value === "agent" ? (en.value ? "agents" : "智能体") : group.value === "llm" ? (en.value ? "models" : "模型") : (en.value ? "submissions" : "提交")));
 // Rows that are bare models all ran in the group's shared harness; the group note names it.
 const sharedHarness = computed(() => currentGroup.value?.harness || "");
 const labelOf = (row) => (row.model ? `${row.model} · ${row.system}` : row.system);
@@ -119,17 +125,23 @@ const updatedText = computed(() => {
   const d = board.value.updated;
   if (!d) return "–";
   const [y, m, day] = d.split("-").map(Number);
-  return `${y} 年 ${m} 月 ${day} 日`;
+  return en.value ? `${y}-${String(m).padStart(2, "0")}-${String(day).padStart(2, "0")}` : `${y} 年 ${m} 月 ${day} 日`;
 });
 const fullCount = computed(() => getTasks(benchId.value, version.value).tasks.length);
 const maxScore = computed(() => Math.max(...rows.value.map((r) => r.score), 1));
-const groupNote = computed(() => groups.value.find((g) => g.id === group.value)?.note || "");
+const groupNote = computed(() => { const g = groups.value.find((x) => x.id === group.value); return (en.value ? g?.note_en || g?.note : g?.note) || ""; });
 
 const domainLabels = computed(() => {
   const map = {};
   for (const task of getTasks(benchId.value, version.value).tasks) map[task.domain] = task.domain_label;
   return map;
 });
+const domainLabelsEn = computed(() => {
+  const map = {};
+  for (const task of getTasks(benchId.value, version.value).tasks) map[task.domain] = task.domain_label_en || task.domain_label;
+  return map;
+});
+
 
 function openRun(runId) {
   router.push({ name: "run", params: { bench: benchId.value, version: version.value, runId } });

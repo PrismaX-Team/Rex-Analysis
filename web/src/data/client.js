@@ -1,6 +1,7 @@
 // The only module that reads content/. Every getter takes the bench id first, then the version.
 import benchesDoc from "@content/benches.json";
 import siteAbout from "@content/about.md?raw";
+import siteAboutEn from "@content/about.en.md?raw";
 import fieldsDoc from "@content/fields.json";
 import committeeDoc from "@content/committee.json";
 
@@ -8,11 +9,13 @@ import rcbVersions from "@content/rcb/versions.json";
 import rcbBoard10 from "@content/rcb/1.0/leaderboard.json";
 import rcbTasks10 from "@content/rcb/1.0/tasks.json";
 import rcbAbout10 from "@content/rcb/1.0/about.md?raw";
+import rcbAbout10En from "@content/rcb/1.0/about.en.md?raw";
 import rcbAtlas10 from "@content/rcb/1.0/atlas.json";
 import rcbPass510 from "@content/rcb/1.0/pass5.json";
 
 import afeVersions from "@content/afe/versions.json";
 import afeAbout10 from "@content/afe/1.0/about.md?raw";
+import afeAbout10En from "@content/afe/1.0/about.en.md?raw";
 
 // Generated run files, keyed by bench then version then run_id.
 const runFiles = import.meta.glob("@content/*/*/runs/*.json", { eager: true, import: "default" });
@@ -30,6 +33,7 @@ const books = {
       leaderboard: rcbBoard10,
       tasks: rcbTasks10,
       about: rcbAbout10,
+      aboutEn: rcbAbout10En,
       atlas: rcbAtlas10,
       pass5: rcbPass510,
       runs: runsOf("rcb", "1.0"),
@@ -39,6 +43,7 @@ const books = {
     versions: afeVersions.versions,
     "1.0": {
       about: afeAbout10,
+      aboutEn: afeAbout10En,
       runs: {},
     },
   },
@@ -91,6 +96,10 @@ export function getAbout(bench, version) {
   return book(bench, version)?.about || "";
 }
 
+export function getAboutEn(bench, version) {
+  return book(bench, version)?.aboutEn || "";
+}
+
 export function getRun(bench, version, runId) {
   return book(bench, version)?.runs?.[runId] || null;
 }
@@ -112,11 +121,16 @@ export function getTaskMeta(bench, version) {
   const pack = getTasks(bench, version);
   const domains = atlas?.domains || pack.domains || [];
   const labels = atlas?.labels || Object.fromEntries(pack.tasks.filter((t) => t.label).map((t) => [t.task_id, t.label]));
-  return { domains, labels };
+  const labelsEn = atlas?.labels_en || {};
+  return { domains, labels, labelsEn };
 }
 
 export function getSiteAbout() {
   return siteAbout;
+}
+
+export function getSiteAboutEn() {
+  return siteAboutEn;
 }
 
 export function getFields() {

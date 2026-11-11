@@ -561,14 +561,54 @@ li:first-child .hb-rank {
   position: relative;
   z-index: 2;
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 22px 4vw;
+  gap: 24px;
+  padding: 28px 4vw 32px;
   border-top: 1px solid var(--line);
   font-family: var(--code);
   font-size: 12px;
   color: var(--muted);
   a { color: var(--muted); }
   a:hover { color: var(--accent); }
+}
+
+.foot-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.foot-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin-bottom: 4px;
+  a, .router-link-active { color: var(--muted); text-decoration: none; }
+  a:hover { color: var(--accent); }
+}
+
+.foot-led, .foot-contact {
+  margin: 0;
+  color: var(--muted);
+  a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: var(--accent); }
+}
+
+.foot-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+  &:hover { opacity: 1; }
+}
+
+.foot-logo {
+  height: 28px;
+  width: auto;
+  filter: invert(1);
+  [data-theme="dark"] & { filter: none; }
 }
 
 // Live bench with no published scores yet.
